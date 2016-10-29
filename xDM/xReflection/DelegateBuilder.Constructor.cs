@@ -59,9 +59,7 @@ namespace xDM.xReflection
         /// <summary>
         /// 通过构造函数返回类型，构造函数，委托类型获取构造函数的委托
         /// </summary>
-        /// <param name="retType">构造函数返回类型</param>
         /// <param name="ctor">构造函数</param>
-        /// <param name="delType">返回指定委托类型</param>
         /// <returns></returns>
         private static Delegate _GetEmitCreateDelegate(this ConstructorInfo ctor)
         {
@@ -85,11 +83,10 @@ namespace xDM.xReflection
             return dlgMethod.CreateDelegate(delType);
         }
         /// <summary>
-        /// 获取Expression方式构建的构造函数委托
+        /// Gets the expression create delegate.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="paramTypes"></param>
-        /// <returns></returns>
+        /// <returns>The expression create delegate.</returns>
+        /// <param name="ctor">Ctor.</param>
         private static Delegate _GetExpressionCreateDelegate(this ConstructorInfo ctor)
         {
             var newExpression = Expression.New(ctor.ReflectedType);
