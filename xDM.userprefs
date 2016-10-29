@@ -1,9 +1,9 @@
-﻿<Properties StartupConfiguration="{E086BC6E-380C-4AC7-BA8D-EB87D72C9C16}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs">
+﻿<Properties StartupConfiguration="{34B9BF5B-2DE0-44F8-9A62-A4779B4E11A2}|Default">
+  <MonoDevelop.Ide.ItemProperties.zTest.xSocket.Client PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="zTest/zTest.xSocket.Server/Program.cs">
     <Files>
-      <File FileName="README.md" Line="4" Column="1" />
-      <File FileName="zTest/Colsole/Program.cs" Line="20" Column="20" />
-      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="140" Column="24" />
+      <File FileName="zTest/zTest.xSocket.Client/Program.cs" Line="1" Column="1" />
+      <File FileName="zTest/zTest.xSocket.Server/Program.cs" Line="2" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -13,4 +13,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.zTest.Colsole PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.zTest.xSocket.Server PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

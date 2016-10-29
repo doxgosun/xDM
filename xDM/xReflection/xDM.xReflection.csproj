@@ -93,9 +93,11 @@
     <Compile Include="DelegateBuilder.Field.cs">
       <DependentUpon>DelegateBuilder.cs</DependentUpon>
     </Compile>
+	<Compile Include="DelegateBuilder.Ext.cs">
+      <DependentUpon>DelegateBuilder.cs</DependentUpon>
+    </Compile>
     <Compile Include="DelegateType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DelegateBuilder.Ext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

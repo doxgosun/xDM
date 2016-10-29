@@ -16,8 +16,8 @@ namespace zTest.Colsole
         {
 
 			TcpServerSocket server = new TcpServerSocket();
-			server.Bind(876);
-			server.Listen();
+			if(server.Bind(8876))
+				server.Listen(100);
 
             //TestDelegateBuilder.Test();
             Console.ReadKey();

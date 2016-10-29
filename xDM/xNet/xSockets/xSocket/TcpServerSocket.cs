@@ -120,8 +120,9 @@ namespace xDM.xNet.xSockets.xSocket
             return -1;
         }
         /// <summary>
-        /// 开始监听
+        /// 开始监听.
         /// </summary>
+        /// <param name="backlog">Backlog.</param>/
         public void Listen(int backlog)
         {
             socket.Listen(backlog);
