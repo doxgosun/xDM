@@ -1,3 +1,3 @@
-# xDM.xData.xClient
+# xDM.xBuild
 
-一个数据库操作类库
+生成的dll文件都在这里，可以根据需要下载
