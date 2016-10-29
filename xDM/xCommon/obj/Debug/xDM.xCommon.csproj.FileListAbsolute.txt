@@ -1,5 +1,0 @@
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xCommon.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xCommon.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Debug\xDM.xCommon.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Debug\xDM.xCommon.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Debug\xDM.xCommon.pdb

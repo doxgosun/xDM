@@ -1,5 +1,0 @@
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xNet.xSockets.oHPSocket.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xNet.xSockets.oHPSocket.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\oHPSocket\obj\x64\Release\xDM.xNet.xSockets.oHPSocket.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\oHPSocket\obj\x64\Release\xDM.xNet.xSockets.oHPSocket.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\oHPSocket\obj\x64\Release\xDM.xNet.xSockets.oHPSocket.pdb

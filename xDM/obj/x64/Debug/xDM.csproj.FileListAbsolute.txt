@@ -1,7 +1,0 @@
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\x64\xDM.dll
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\x64\xDM.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xDM\obj\x64\Debug\xDM.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\obj\x64\Debug\xDM.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\obj\x64\Debug\xDM.csprojResolveAssemblyReference.cache

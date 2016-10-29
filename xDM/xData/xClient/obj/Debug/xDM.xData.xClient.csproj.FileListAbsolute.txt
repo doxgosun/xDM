@@ -1,9 +1,0 @@
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\bin\Debug\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\bin\Debug\xDM.xData.xClient.pdb
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\AnyCPU\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\AnyCPU\xDM.xData.xClient.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.xClient.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\obj\Debug\xDM.xData.xClient.csprojResolveAssemblyReference.cache
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\obj\Debug\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\obj\Debug\xDM.xData.xClient.pdb

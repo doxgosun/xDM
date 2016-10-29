@@ -1,5 +1,0 @@
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xReflection.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xReflection.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xReflection\obj\Debug\xDM.xReflection.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xReflection\obj\Debug\xDM.xReflection.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xReflection\obj\Debug\xDM.xReflection.pdb

@@ -1,7 +1,0 @@
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xNet.xSockets.xHPSocket.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xNet.xSockets.xHPSocket.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\xHPSocket\bin\Debug\xDM.xNet.xSockets.xHPSocket.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\xHPSocket\bin\Debug\xDM.xNet.xSockets.xHPSocket.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\xHPSocket\obj\Debug\xDM.xNet.xSockets.xHPSocket.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\xHPSocket\obj\Debug\xDM.xNet.xSockets.xHPSocket.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\xHPSocket\obj\Debug\xDM.xNet.xSockets.xHPSocket.pdb

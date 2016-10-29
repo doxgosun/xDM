@@ -1,4 +1,0 @@
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xData.xClient.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xData.xClient.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xData\xClient\obj\Release\xDM.xData.xClient.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xData\xClient\obj\Release\xDM.xData.xClient.pdb

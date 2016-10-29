@@ -1,6 +1,0 @@
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\bin\x64\Debug\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\bin\x64\Debug\xDM.xData.xClient.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\obj\x64\Debug\xDM.xData.xClient.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xClient\obj\x64\Debug\xDM.xData.xClient.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.xData.xClient.dll
-D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.xData.xClient.pdb

@@ -1,9 +1,0 @@
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\bin\Debug\xDM.xData.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\bin\Debug\xDM.xData.pdb
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\AnyCPU\xDM.xData.dll
-D:\Documents\visual studio 2015\Projects\xDM\Build\Debug\AnyCPU\xDM.xData.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.dll
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\obj\Debug\xDM.xData.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\obj\Debug\xDM.xData.pdb
-D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xData\obj\Debug\xDM.xData.csprojResolveAssemblyReference.cache

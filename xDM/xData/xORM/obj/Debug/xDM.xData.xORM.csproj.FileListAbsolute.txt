@@ -1,7 +1,0 @@
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\bin\Debug\xDM.xData.xORM.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\bin\Debug\xDM.xData.xORM.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.xORM.dll
-D:\Documents\visual studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xData.xORM.pdb
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\obj\Debug\xDM.xData.xORM.csprojResolveAssemblyReference.cache
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\obj\Debug\xDM.xData.xORM.dll
-D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\obj\Debug\xDM.xData.xORM.pdb
