@@ -92,7 +92,9 @@
     <Compile Include="TcpServerSocket.cs" />
     <Compile Include="TcpServerSocketRecivedDataHandler.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="MessageExt.cs" />
   </ItemGroup>
