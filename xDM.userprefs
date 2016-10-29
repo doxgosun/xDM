@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{C6E282AE-D563-4B95-9F1A-EC75CF8738B8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="xResourcesFiles/xClient/README.md">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xData/xClient/README.md">
     <Files>
-      <File FileName="xResourcesFiles/xClient/README.md" Line="2" Column="10" />
+      <File FileName="xResourcesFiles/xClient/README.md" Line="2" Column="3" />
+      <File FileName="xDM/xData/xClient/README.md" Line="7" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
