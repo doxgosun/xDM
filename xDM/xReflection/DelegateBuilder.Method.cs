@@ -10,7 +10,7 @@ namespace xDM.xReflection
 {
     public static partial class DelegateBuilder
     {
-        public static Delegate GetMethodDelegate(MethodInfo method)
+        public static Delegate GetMethodDelegate(this MethodInfo method)
         {
             if (method == null) return null;
             Delegate retDelegate;
@@ -23,7 +23,7 @@ namespace xDM.xReflection
             return retDelegate;
         }
 
-        public static TDelegate GetMethodDelegate<TDelegate>(MethodInfo method) where TDelegate : class
+        public static TDelegate GetMethodDelegate<TDelegate>(this MethodInfo method) where TDelegate : class
         {
             return GetMethodDelegate(method) as TDelegate;
         }

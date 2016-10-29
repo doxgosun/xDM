@@ -1,8 +1,16 @@
 ﻿<Properties StartupConfiguration="{C6E282AE-D563-4B95-9F1A-EC75CF8738B8}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xData/xClient/README.md">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xReflection/DelegateBuilder.Ext.cs">
     <Files>
       <File FileName="xResourcesFiles/xClient/README.md" Line="2" Column="3" />
-      <File FileName="xDM/xData/xClient/README.md" Line="7" Column="25" />
+      <File FileName="xDM/xData/xClient/README.md" Line="15" Column="18" />
+      <File FileName="xDM/xReflection/README.md" Line="10" Column="1" />
+      <File FileName="xDM/xReflection/Extensions/DelegateBuilderExt.cs" Line="6" Column="9" />
+      <File FileName="xDM/xReflection/DelegateBuilder.cs" Line="1" Column="1" />
+      <File FileName="xDM/xReflection/DelegateBuilder.Constructor.cs" Line="93" Column="67" />
+      <File FileName="xDM/xReflection/DelegateBuilder.Field.cs" Line="30" Column="55" />
+      <File FileName="xDM/xReflection/DelegateBuilder.Method.cs" Line="31" Column="59" />
+      <File FileName="xDM/xReflection/DelegateBuilder.Property.cs" Line="25" Column="59" />
+      <File FileName="xDM/xReflection/DelegateBuilder.Ext.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

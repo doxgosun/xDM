@@ -1,6 +1,6 @@
 #xDM.xData.xClient
 
-一个支持各种数据库的大DBHelper
+可以理解为一个支持各种数据库的DBHelper，但功能理强大，使用更方便
 
 使用方法：
 
@@ -12,7 +12,7 @@ https://pan.baidu.com/s/1gfFPK0j#list/path=%2FGitHub%2FxDM%2FxDbDrivers&parentPa
 
 using xDM.xData.xClient;
 
-var client = new xDM.xData.xClient.DataClient(ClientType.SQLite);
+var client = new DataClient(ClientType.SQLite);
 
 client.ConnectionString = "xxxxxx";
 

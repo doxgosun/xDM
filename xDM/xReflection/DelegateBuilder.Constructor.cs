@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace xDM.xReflection
 {
-    partial class DelegateBuilder
+    static partial class DelegateBuilder
     {
-        public static TFunc GetCreateDelegate<TFunc>(Type type) where TFunc : class
+        public static TFunc GetCreateDelegate<TFunc>(this Type type) where TFunc : class
         {
             return GetCreateDelegate(GetConstructorInfo(type,null)) as TFunc;
         }
@@ -41,7 +41,7 @@ namespace xDM.xReflection
         /// <param name="type"></param>
         /// <param name="paramTypes"></param>
         /// <returns></returns>
-        public static Delegate GetCreateDelegate(Type type, Type[] paramTypes)
+        public static Delegate GetCreateDelegate(this Type type, Type[] paramTypes)
         {
             return GetCreateDelegate(GetConstructorInfo(type, paramTypes));
         }
@@ -63,7 +63,7 @@ namespace xDM.xReflection
         /// <param name="ctor">构造函数</param>
         /// <param name="delType">返回指定委托类型</param>
         /// <returns></returns>
-        private static Delegate _GetEmitCreateDelegate(ConstructorInfo ctor)
+        private static Delegate _GetEmitCreateDelegate(this ConstructorInfo ctor)
         {
             if (ctor == null) return null;
             Type[] paramTypes = null;
@@ -90,7 +90,7 @@ namespace xDM.xReflection
         /// <param name="type"></param>
         /// <param name="paramTypes"></param>
         /// <returns></returns>
-        private static Delegate _GetExpressionCreateDelegate(ConstructorInfo ctor)
+        private static Delegate _GetExpressionCreateDelegate(this ConstructorInfo ctor)
         {
             var newExpression = Expression.New(ctor.ReflectedType);
             var paramInfos = ctor.GetParameters();

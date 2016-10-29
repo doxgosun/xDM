@@ -10,7 +10,7 @@ namespace xDM.xReflection
 {
     partial class DelegateBuilder
     {
-        public static TDelegate GetGetterDelegate<TDelegate>(FieldInfo field) where TDelegate:class
+        public static TDelegate GetGetterDelegate<TDelegate>(this FieldInfo field) where TDelegate:class
         {
             return GetGetterDelegate(field) as TDelegate;
         }
@@ -18,7 +18,7 @@ namespace xDM.xReflection
         {
             return _GetEmitFieldDelegate(field, false);
         }
-        public static TDelegate GetSetterDelegate<TDelegate>(FieldInfo field) where TDelegate : class
+        public static TDelegate GetSetterDelegate<TDelegate>(this FieldInfo field) where TDelegate : class
         {
             return GetSetterDelegate(field) as TDelegate;
         }
