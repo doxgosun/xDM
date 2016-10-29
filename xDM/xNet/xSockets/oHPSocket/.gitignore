@@ -27,6 +27,7 @@ project.fragment.lock.json
 artifacts/
 Properties/launchSettings.json
 
+*.mdb
 *_i.c
 *_p.c
 *_i.h
