@@ -1,0 +1,5 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xNet.xSockets.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\AnyCPU\xDM.xNet.xSockets.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\obj\Debug\xDM.xNet.xSockets.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\obj\Debug\xDM.xNet.xSockets.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\obj\Debug\xDM.xNet.xSockets.csprojResolveAssemblyReference.cache

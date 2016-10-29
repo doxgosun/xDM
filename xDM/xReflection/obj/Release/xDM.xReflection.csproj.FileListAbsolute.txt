@@ -1,0 +1,4 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xReflection.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xReflection.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xReflection\obj\Release\xDM.xReflection.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xReflection\obj\Release\xDM.xReflection.pdb

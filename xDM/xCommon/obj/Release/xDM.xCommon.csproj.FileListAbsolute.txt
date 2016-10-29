@@ -1,0 +1,5 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xCommon.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\AnyCPU\xDM.xCommon.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Release\xDM.xCommon.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Release\xDM.xCommon.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xCommon\obj\Release\xDM.xCommon.pdb

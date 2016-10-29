@@ -1,0 +1,4 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xData.xORM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xData.xORM.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xData\xORM\obj\x64\Release\xDM.xData.xORM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xData\xORM\obj\x64\Release\xDM.xData.xORM.pdb

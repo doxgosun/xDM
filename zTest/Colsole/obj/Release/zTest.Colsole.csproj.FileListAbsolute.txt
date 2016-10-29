@@ -1,0 +1,10 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\zTest.Colsole.exe.config
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\zTest.Colsole.exe
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\zTest.Colsole.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\xDM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\xDM.xNet.xSockets.xSocket.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\xDM.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\bin\Release\xDM.xNet.xSockets.xSocket.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\obj\Release\zTest.Colsole.csprojResolveAssemblyReference.cache
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\obj\Release\zTest.Colsole.exe
+D:\Documents\Visual Studio 2015\Projects\xDM\zTest\Colsole\obj\Release\zTest.Colsole.pdb

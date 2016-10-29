@@ -1,0 +1,4 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\obj\x64\Release\xDM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\obj\x64\Release\xDM.pdb

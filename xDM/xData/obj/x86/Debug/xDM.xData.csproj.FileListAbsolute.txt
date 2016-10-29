@@ -1,0 +1,6 @@
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\bin\x86\Debug\xDM.xData.dll
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\bin\x86\Debug\xDM.xData.pdb
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\obj\x86\Debug\xDM.xData.dll
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\obj\x86\Debug\xDM.xData.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x86\xDM.xData.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x86\xDM.xData.pdb

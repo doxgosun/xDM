@@ -1,0 +1,6 @@
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\bin\x64\Debug\xDM.xData.xORM.dll
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\bin\x64\Debug\xDM.xData.xORM.pdb
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\obj\x64\Debug\xDM.xData.xORM.dll
+D:\Documents\visual studio 2015\Projects\xDM\xDM\xData\xORM\obj\x64\Debug\xDM.xData.xORM.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.xData.xORM.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Debug\x64\xDM.xData.xORM.pdb

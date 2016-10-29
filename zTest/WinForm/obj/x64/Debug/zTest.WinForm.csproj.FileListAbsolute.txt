@@ -1,0 +1,8 @@
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\bin\x64\Debug\zTest.WinForm.exe.config
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\bin\x64\Debug\zTest.WinForm.exe
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\bin\x64\Debug\zTest.WinForm.pdb
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\obj\x64\Debug\zTest.WinForm.csprojResolveAssemblyReference.cache
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\obj\x64\Debug\zTest.WinForm.Properties.Resources.resources
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\obj\x64\Debug\zTest.WinForm.csproj.GenerateResource.Cache
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\obj\x64\Debug\zTest.WinForm.exe
+D:\Documents\visual studio 2015\Projects\xDM\zTest\WinForm\obj\x64\Debug\zTest.WinForm.pdb

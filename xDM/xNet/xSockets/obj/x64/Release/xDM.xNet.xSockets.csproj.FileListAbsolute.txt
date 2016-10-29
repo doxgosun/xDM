@@ -1,0 +1,4 @@
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xNet.xSockets.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xBuild\Release\x64\xDM.xNet.xSockets.pdb
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\obj\x64\Release\xDM.xNet.xSockets.dll
+D:\Documents\Visual Studio 2015\Projects\xDM\xDM\xNet\xSockets\obj\x64\Release\xDM.xNet.xSockets.pdb

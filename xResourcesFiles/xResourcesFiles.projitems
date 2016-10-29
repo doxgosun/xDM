@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0f862517-b3b5-46e1-9c54-b26d54f27403</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>xResourcesFiles</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2app.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2app64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2cli.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2cli64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2clio.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2clixml4c.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2clixml4c64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2ldap.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2ldap64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2ldapm.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2ldapm64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2locale.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2locale64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2odbc.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2odbc64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\db2odbch.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\IBM.Data.DB2.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\IBM.Data.DB2.Entity.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\IBM.Data.Informix.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\IBMOSauthclientTwoPart64.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\DB2\IBM.Data.DB2\IBM.Data.DB2\Mono.Security.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\MySql\MySql.Data.MySqlClient\MySql.Data\MySql.Data.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oci.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\Oracle.DataAccess.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oraociei12.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oraons.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\OraOps12.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\PostgreSQL\Npgsql\Npgsql\Mono.Security.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\PostgreSQL\Npgsql\Npgsql\Npgsql.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\SQLite\System.Data.SQLite\System.Data.SQLite\System.Data.SQLite.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Sybase\Sybase.Data.AseClient\Sybase.AdoNet4.AseClient\Sybase.AdoNet4.AseClient.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Vertica\Vertica.Data.VerticaClient\Vertica.Data\Vertica.Data.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\DB2\IBM.Data.DB2\IBM.Data.DB2\IBM.Data.DB2.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\DB2\IBM.Data.DB2\IBM.Data.DB2\IBM.Data.DB2.Entity.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\MySql\MySql.Data.MySqlClient\MySql.Data\MySql.Data.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oci.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\Oracle.DataAccess.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oraociei12.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\oraons.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Oracle\Oracle.DataAccess.Client\Oracle.DataAccess\OraOps12.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\PostgreSQL\Npgsql\Npgsql\Mono.Security.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\PostgreSQL\Npgsql\Npgsql\Npgsql.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\SQLite\System.Data.SQLite\System.Data.SQLite\System.Data.SQLite.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Sybase\Sybase.Data.AseClient\Sybase.AdoNet4.AseClient\Sybase.AdoNet4.AseClient.dll" />
+    <None Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Vertica\Vertica.Data.VerticaClient\Vertica.Data\Vertica.Data.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x64\HPSocket4C-SSL_U.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x64\HPSocket4C_U.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x64\HPSocketCS.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x86\HPSocket4C-SSL_U.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x86\HPSocket4C_U.dll" />
+    <None Include="$(MSBuildThisFileDirectory)oHPSocket\HPSocket4CS\x86\HPSocketCS.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\Access\System.Data.OleDb\" />
+    <Folder Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x64\SQLServer\System.Data.SqlClient\" />
+    <Folder Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\Access\System.Data.OleDb\" />
+    <Folder Include="$(MSBuildThisFileDirectory)xClient\xDbDrivers\x86\SQLServer\System.Data.SqlClient\" />
+  </ItemGroup>
+</Project>
