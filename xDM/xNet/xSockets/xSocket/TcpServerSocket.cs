@@ -133,11 +133,11 @@ namespace xDM.xNet.xSockets.xSocket
             socket.AcceptAsync(acceptArg);
         }
         /// <summary>
-        /// 开始监听，backlog=1000；
+        /// 开始监听，backlog=1024；
         /// </summary>
         public void Listen()
         {
-            Listen(1000);
+            Listen(1024);
         }
 
         private void NewClientAccept(object oClientSocket)

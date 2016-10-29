@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using xDM.xNet.xSockets;
 using System.Data.SqlClient;
 using xDM.xData.xClient;
+using xDM.xNet.xSockets.xSocket;
 
 namespace zTest.Colsole
 {
@@ -14,9 +15,11 @@ namespace zTest.Colsole
         static void Main(string[] args)
         {
 
-            var client = new DataClient(ClientType.SQLServer);
+			TcpServerSocket server = new TcpServerSocket();
+			server.Bind(876);
+			server.Listen();
 
-            TestDelegateBuilder.Test();
+            //TestDelegateBuilder.Test();
             Console.ReadKey();
         }
     }

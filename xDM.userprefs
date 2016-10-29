@@ -1,9 +1,16 @@
-﻿<Properties StartupConfiguration="{C6E282AE-D563-4B95-9F1A-EC75CF8738B8}|Default">
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupConfiguration="{E086BC6E-380C-4AC7-BA8D-EB87D72C9C16}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs">
+    <Files>
+      <File FileName="README.md" Line="4" Column="1" />
+      <File FileName="zTest/Colsole/Program.cs" Line="20" Column="20" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="139" Column="10" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.zTest.WinForm PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.zTest.Colsole PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

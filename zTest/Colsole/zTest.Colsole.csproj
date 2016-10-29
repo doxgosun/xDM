@@ -95,10 +95,6 @@
       <Project>{f767777e-4ddd-48e3-831f-6152c03deabf}</Project>
       <Name>xDM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\xDM\xNet\xSockets\xSocket\xDM.xNet.xSockets.xSocket.csproj">
-      <Project>{54b0af87-4b36-4caa-bf75-fc440246ad7b}</Project>
-      <Name>xDM.xNet.xSockets.xSocket</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
