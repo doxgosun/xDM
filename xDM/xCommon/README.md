@@ -1,6 +1,10 @@
 ﻿#xDM.xCommon
 
  一个通用类库，集成了许多方便的小函数及扩展程序
+ 
+ 项目总目录：https://github.com/doxgosun/xDM
+
+DLL下载：https://github.com/doxgosun/xDM/tree/master/xBuild
 
 使用方法：引用 xDM.xCommon.dll
 
