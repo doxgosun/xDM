@@ -144,12 +144,24 @@ namespace xDM.xData.xClient
         }
 
 
+		/// <summary>
+		/// Gets the namespace.
+		/// </summary>
+		/// <returns>The namespace.</returns>
+		/// <param name="dbType">Db type.</param>
         public static string GetNamespace(string dbType)
         {
             string nameSpace = "";
             _dicDbTypeToNameSpaces.TryGetValue(dbType + "", out nameSpace);
             return nameSpace;
         }
+
+
+		/// <summary>
+		/// Creates the command.
+		/// </summary>
+		/// <returns>The command.</returns>
+		/// <param name="dbType">Db type.</param>
         public static IDbCommand CreateCommand(ClientType dbType)
         {
             return CreateCommand(dbType + "");
@@ -159,7 +171,11 @@ namespace xDM.xData.xClient
         {
             return GetInstance<IDbCommand>(dbType, regCommand);
         }
-
+		/// <summary>
+		/// Creates the connection.
+		/// </summary>
+		/// <returns>The connection.</returns>
+		/// <param name="dbType">Db type.</param>
         public static IDbConnection CreateConnection(ClientType dbType)
         {
             return CreateConnection(dbType + "");
@@ -169,7 +185,11 @@ namespace xDM.xData.xClient
         {
             return GetInstance<IDbConnection>(dbType, regConnection);
         }
-
+		/// <summary>
+		/// Creates the data adapter.
+		/// </summary>
+		/// <returns>The data adapter.</returns>
+		/// <param name="dbType">Db type.</param>
         public static IDbDataAdapter CreateDataAdapter(ClientType dbType)
         {
             return CreateDataAdapter(dbType + "");

@@ -16,6 +16,8 @@ https://pan.baidu.com/s/1gfFPK0j#list/path=%2FGitHub%2FxDM%2FxDbDrivers&parentPa
 
 using xDM.xData.xClient;
 
+
+//DataClient
 var client = new DataClient(ClientType.SQLite);
 
 client.ConnectionString = "xxxxxx";
@@ -23,5 +25,21 @@ client.ConnectionString = "xxxxxx";
 client.CommandText = "xxxxx";
 
 var dt = client.ExecuteDataTable();
+
+
+//BulkLoader
+var loader = new BulkLoader(client);
+loader......
+loader.Load();
+
+//BulkCopy
+var copier = new BulkCopy(client);
+copier.....
+copier.WriteToServer(dt);
+
+//BulkInsert
+bar inserter = new BulkInsert(client);
+inserter.....
+inserter.InsertToServer(dt);
 
 ......
