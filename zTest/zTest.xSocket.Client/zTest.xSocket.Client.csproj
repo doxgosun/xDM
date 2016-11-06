@@ -41,6 +41,10 @@
       <Project>{54B0AF87-4B36-4CAA-BF75-FC440246AD7B}</Project>
       <Name>xDM.xNet.xSockets.xSocket</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\xDM\xCommon\xDM.xCommon.csproj">
+      <Project>{8025A25F-8936-4C25-85A0-D9AC97F65B3F}</Project>
+      <Name>xDM.xCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

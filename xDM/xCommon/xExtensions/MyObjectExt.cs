@@ -18,20 +18,11 @@ namespace xDM.xCommon.xExtensions
         /// 序列化类对象
         /// </summary>
         /// <typeparam name="T">类名</typeparam>
-        /// <param name="t">类实例</param>
+        /// <param name="obj">类实例</param>
         /// <returns>类的序列化字符串</returns>
-        public static string Serializable(this object t)
+        public static string Serializable(this object obj)
         {
-            if (t == null) return "";
-            IFormatter formatter = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream();
-            byte[] b;
-            formatter.Serialize(ms, t);
-            ms.Position = 0;
-            b = new byte[ms.Length];
-            ms.Read(b, 0, b.Length);
-            ms.Close();
-            ms.Dispose();
+			var b = obj.SerializeToByte();
             return Convert.ToBase64String(b);
         }
 

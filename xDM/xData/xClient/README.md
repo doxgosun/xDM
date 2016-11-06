@@ -28,18 +28,27 @@ var dt = client.ExecuteDataTable();
 
 
 //BulkLoader
+
 var loader = new BulkLoader(client);
+
 loader......
+
 loader.Load();
 
 //BulkCopy
+
 var copier = new BulkCopy(client);
+
 copier.....
+
 copier.WriteToServer(dt);
 
 //BulkInsert
+
 bar inserter = new BulkInsert(client);
+
 inserter.....
+
 inserter.InsertToServer(dt);
 
 ......

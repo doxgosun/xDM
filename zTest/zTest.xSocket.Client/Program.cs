@@ -2,6 +2,7 @@
 using xDM.xNet.xSockets;
 using xDM.xNet.xSockets.xSocket;
 using System.Threading;
+using xDM.xCommon.xExtensions;
 
 namespace zTest.xSocket.Client
 {
@@ -9,6 +10,11 @@ namespace zTest.xSocket.Client
 	{
 		public static void Main(string[] args)
 		{
+			string tmp = "asf\0\ff  ff\0";
+			var seee = tmp.SerializeToByte();
+			var str = tmp.Serializable();
+			Message m = new Message();
+			var strm = m.Serializable();
 			var client = new TcpClientSocket();
 			client.HandleMessage += Client_HandleMessage;
 			if (client.Connect("127.0.0.1", 23456))
