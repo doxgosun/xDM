@@ -22,6 +22,20 @@ namespace xDM.xNet.xSockets.xSocket
 
 		protected override void hdMsg(Message msg)
 		{
+			DateTime workTime = DateTime.Now;
+			DateTime updateTime = DateTime.MinValue;
+			TimeSpan tsUpdate = new TimeSpan(0, 0, 1);
+			workTime = DateTime.Now;
+			if (DateTime.Now - updateTime > tsUpdate)
+			{
+				updateTime = DateTime.Now;
+				KeyValuePair<Socket, DateTime> newKv = new KeyValuePair<Socket, DateTime>(clientSocket, DateTime.Now);
+				KeyValuePair<Socket, DateTime> kv;
+				if (ClientSocketDic.TryGetValue(clientSocket.RemoteEndPoint + "", out kv))
+				{
+					ClientSocketDic.TryUpdate(clientSocket.RemoteEndPoint + "", newKv, kv);
+				}
+			}
 			this.HandleMessage?.BeginInvoke(server, clientSocket.RemoteEndPoint.ToString(), msg, null, null);
 		}
 	}

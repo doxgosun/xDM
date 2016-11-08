@@ -35,7 +35,7 @@ namespace zTest.xSocket.Server
 			{
 				Thread.Sleep(1000);
                 Console.WriteLine($"收到的信息为：{reCount}");
-                reCount = 0;
+                //reCount = 0;
             }
 		}
 		static int reCount = 0;

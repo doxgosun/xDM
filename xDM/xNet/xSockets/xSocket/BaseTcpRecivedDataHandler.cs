@@ -17,6 +17,8 @@ namespace xDM.xNet.xSockets.xSocket
 		/// 接收信息缓存
 		/// </summary>
 		public ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; }
+
+
 		public bool Quit = false;
 
 		public BaseTcpRecivedDataHandler()
@@ -24,7 +26,20 @@ namespace xDM.xNet.xSockets.xSocket
 			Thread thd = new Thread(hdBytes);
 			thd.IsBackground = true;
 			thd.Start();
-			Thread thdMsg = new Thread(hdMsg);
+			StartHandleMsgBytesThread();
+		}
+
+		private int hdMsgThredCount = 0;
+		private object hdMsgThreadLock = new object();
+		private void StartHandleMsgBytesThread()
+		{
+			if (hdMsgThredCount > 4)
+				return;
+			lock (hdMsgThreadLock)
+			{
+				hdMsgThredCount++;
+			}
+			Thread thdMsg = new Thread(hdMsgBytes);
 			thdMsg.IsBackground = true;
 			thdMsg.Start();
 		}
@@ -131,17 +146,26 @@ namespace xDM.xNet.xSockets.xSocket
 
 		}
 
-		private void hdMsg()
+		private void hdMsgBytes()
 		{
-			DateTime workTime = DateTime.Now;
-			DateTime updateTime = DateTime.MinValue;
-			TimeSpan ts = new TimeSpan(1, 1, 0);
-			TimeSpan tsUpdate = new TimeSpan(0, 0, 1);
-			byte[] msgBytes;
-			while (!Quit || DateTime.Now - workTime > ts)
+			while (!Quit)
 			{
+				if (msgBytesQueue.Count < 100 & hdMsgThredCount > 1)
+				{
+					lock (hdMsgThreadLock)
+					{
+						if (msgBytesQueue.Count < 100 & hdMsgThredCount > 1)
+						{
+							hdMsgThredCount--;
+							return;
+						}
+					}
+				}
 				while (msgBytesQueue.Count > 0)
 				{
+					if (hdMsgThredCount < 4 && msgBytesQueue.Count > 1000)
+						StartHandleMsgBytesThread();
+					byte[] msgBytes;
 					if (msgBytesQueue.TryDequeue(out msgBytes))
 					{
 						var msg = MessageExt.GetMessage(msgBytes);

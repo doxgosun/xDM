@@ -23,7 +23,7 @@ namespace zTest.xSocket.Client
                         while (true)
                         {
                             sendCount++;
-                          //  Thread.Sleep(10);
+                            //Thread.Sleep(1);
                             //if (sendCount % 2 == 0)
                             {
                                 msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
@@ -43,7 +43,7 @@ namespace zTest.xSocket.Client
             while (true)
             {
 				Console.WriteLine(sendCount);
-				sendCount = 0;
+				//sendCount = 0;
                 Thread.Sleep(1000);
             }
 
