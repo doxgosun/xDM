@@ -1,11 +1,13 @@
-﻿<Properties StartupConfiguration="{34B9BF5B-2DE0-44F8-9A62-A4779B4E11A2}|Default">
+﻿<Properties StartupConfiguration="{6CC4E9AE-64EA-41C8-9058-6B2829CA1F57}|Default">
   <MonoDevelop.Ide.ItemProperties.zTest.xSocket.Client PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/Extensions/MyExt.cs">
     <Files>
-      <File FileName="zTest/zTest.xSocket.Client/Program.cs" Line="22" Column="5" />
-      <File FileName="zTest/zTest.xSocket.Server/Program.cs" Line="19" Column="1" />
-      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocketRecivedDataHandler.cs" Line="61" Column="26" />
-      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="1" Column="1" />
+      <File FileName="zTest/zTest.xSocket.Client/Program.cs" Line="22" Column="23" />
+      <File FileName="zTest/zTest.xSocket.Server/Program.cs" Line="1" Column="1" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="383" Column="30" />
+      <File FileName="xDM/xNet/xSockets/xSocket/BaseTcpRecivedDataHandler.cs" Line="87" Column="54" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocketRecivedDataHandler.cs" Line="15" Column="22" />
+      <File FileName="xDM/xNet/xSockets/xSocket/Extensions/MyExt.cs" Line="44" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -18,6 +20,8 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="zTest/zTest.xSocket.Client/Program.cs" line="20" offsetX="292" offsetY="285" expression="sendCount" liveUpdate="False" />
     <Watch file="zTest/zTest.xSocket.Client/Program.cs" line="15" offsetX="357" offsetY="210" expression="str" liveUpdate="False" />
+    <Watch file="xDM/xNet/xSockets/xSocket/TcpServerSocketRecivedDataHandler.cs" line="55" offsetX="371" offsetY="810" expression="dataQueue.Count" liveUpdate="True" />
+    <Watch file="xDM/xNet/xSockets/xSocket/TcpServerSocketRecivedDataHandler.cs" line="55" offsetX="371" offsetY="810" expression="dataQueue.Count" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.ItemProperties.zTest.Colsole PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.zTest.xSocket.Server PreferredExecutionTarget="MonoDevelop.Default" />

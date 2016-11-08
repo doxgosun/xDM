@@ -35,14 +35,15 @@ namespace xDM.xNet.xSockets.xSocket.Extensions
         {
             if (obj == null)
                 return null;
-            MemoryStream ms = new MemoryStream();
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(ms, obj);
-            ms.Position = 0;
-            byte[] bytes = new byte[ms.Length];
-            ms.Read(bytes, 0, bytes.Length);
-            ms.Close();
-            return bytes;
+			using (MemoryStream ms = new MemoryStream())
+			{
+				BinaryFormatter formatter = new BinaryFormatter();
+				formatter.Serialize(ms, obj);
+				ms.Position = 0;
+				byte[] bytes = new byte[ms.Length];
+				ms.Read(bytes, 0, bytes.Length);
+				return bytes;
+			}
         }
         /// <summary>
         /// 反序列化
@@ -56,12 +57,13 @@ namespace xDM.xNet.xSockets.xSocket.Extensions
         }
         public static T DeDeserialize<T>(this byte[] bytes)
         {
-            MemoryStream ms = new MemoryStream(bytes);
-            ms.Position = 0;
-            BinaryFormatter formatter = new BinaryFormatter();
-            T obj = (T)formatter.Deserialize(ms);
-            ms.Close();
-            return obj;
+			using (MemoryStream ms = new MemoryStream(bytes))
+			{
+				ms.Position = 0;
+				BinaryFormatter formatter = new BinaryFormatter();
+				T obj = (T)formatter.Deserialize(ms);
+				return obj;
+			}
         }
     }
 }

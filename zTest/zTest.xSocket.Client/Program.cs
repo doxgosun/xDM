@@ -42,7 +42,9 @@ namespace zTest.xSocket.Client
             }
             while (true)
             {
-                Thread.Sleep(100);
+				Console.WriteLine(sendCount);
+				sendCount = 0;
+                Thread.Sleep(1000);
             }
 
 

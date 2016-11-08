@@ -2,7 +2,9 @@
 using System.Net;
 using xDM.xNet.xSockets.xSocket;
 using xDM.xNet.xSockets;
+using xDM.xNet.xSockets.xSocket.Extensions;
 using System.Threading;
+using System.Data;
 
 
 namespace zTest.xSocket.Server
@@ -11,6 +13,8 @@ namespace zTest.xSocket.Server
 	{
 		public static void Main(string[] args)
 		{
+			DataTable dt = new DataTable();
+			var dddd = dt.SerializeToByte();
             int len = 1234445566;
             byte[] d = new byte[4];
             d[0] = (Byte)((len & 0x7f000000) >> 24);
