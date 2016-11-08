@@ -55,11 +55,11 @@ namespace xDM.xNet.xSockets.xSocket
         /// <summary>
         /// 发送信息缓存
         /// </summary>
-        ConcurrentDictionary<string, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<string, Message>();
+        ConcurrentDictionary<Guid, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
         /// <summary>
         /// 接收信息缓存
         /// </summary>
-        ConcurrentDictionary<string, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<string, Message>();
+        ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
 
         public TcpServerSocket()
         {
@@ -198,9 +198,10 @@ namespace xDM.xNet.xSockets.xSocket
                     int rec = e.BytesTransferred;
                     if (rec > 0)
                     {
-                        var data = e.Buffer.ToArray();
+                        //var data = e.Buffer.ToArray();
                         byte[] tmp = new byte[rec];
-                        data.CopyTo(tmp, 0, rec);
+                        //data.CopyTo(tmp, 0, rec);
+                        Array.Copy(e.Buffer, 0, tmp,0, rec);
                         var dataHandler = e.UserToken as TcpServerSocketRecivedDataHandler;
                         dataHandler.dataQueue.Enqueue(tmp);
                     }
@@ -247,22 +248,23 @@ namespace xDM.xNet.xSockets.xSocket
             }
             var startTime = DateTime.Now;
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, timeOutMillionSecond);
-            var guid = msg.MessageGuid;
-            if (guid + "" == "")
+            var guid = msg.GetGuid();
+            if (guid == Guid.Empty)
             {
-                guid = Guid.NewGuid().ToString("N");
+                guid = Guid.NewGuid();
+                msg.SetGuid(guid);
             }
             while (!dicSendedMessages.TryAdd(guid, msg))
             {
-                guid = Guid.NewGuid().ToString("N");
+                guid = Guid.NewGuid();
                 if ((DateTime.Now - startTime) > ts)
                 {
                     return null;
                 }
                 Thread.Sleep(10);
             }
-            var oGuid = msg.MessageGuid;
-            msg.MessageGuid = guid;
+            var oGuid = msg.GetGuid();
+            msg.SetGuid(guid);
             SendMessageAsync(remoteEndPoint, msg);
             msg = null;
             while (!dicRevivedMessages.TryRemove(guid, out msg))
@@ -277,7 +279,7 @@ namespace xDM.xNet.xSockets.xSocket
             }
             if (msg != null)
             {
-                msg.MessageGuid = oGuid;
+                msg.SetGuid(oGuid);
             }
             return msg;
         }

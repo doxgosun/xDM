@@ -1,8 +1,10 @@
 # xDM.xNet.xSockets.xSocket
 
+目标框架：.net 4
+
 tcp socket 的一个简单封装，原来用于公司生产环境，一直稳定，但并发等没测试过，有心人可以测试一下，并将结果告知一声。
 
-可用于windows,mac,(Linux暂时未测试，理论上mac的mono可以运行，linux也是可以的)
+可用于windows,mac,Linux. （测试环境：win10,MacOS10.12 + mono, Ubuntu16.04 + mono）
 
 项目总目录：https://github.com/doxgosun/xDM
 
@@ -76,5 +78,3 @@ using xDM.xNet.xSockets.xSocket;
 			Console.WriteLine($"收到的信息为：{msg.Value}");
 		}
 
-
-已在 Windows10 + MacOS10.12.1 测试通过

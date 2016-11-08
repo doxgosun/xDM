@@ -34,8 +34,8 @@ namespace xDM.xNet.xSockets.xSocket
         /// 处理错误
         /// </summary>
         public event Action<TcpClientSocket, Exception> onError;
-        ConcurrentDictionary<string, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<string, Message>();
-        ConcurrentDictionary<string, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<string, Message>();
+        ConcurrentDictionary<Guid, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
+        ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
 
         public TcpClientSocket()
         {
@@ -131,26 +131,26 @@ namespace xDM.xNet.xSockets.xSocket
                         string reMsg = Encoding.UTF8.GetString(data, 0, rec);
                         string msgTmp = e.UserToken + "" + reMsg;
                         //msgTmp = msgTmp + reMsg;
-                        Message[] msgs = MessageExt.GetMessages(msgTmp);
+                        Message[] msgs = new Message[0];// MessageExt.GetMessages(msgTmp);
                         if (msgs.Length > 0)
                         {
                             new Action<Message[]>((ms) =>
                             {
                                 foreach (Message msg in ms)
                                 {
-                                    if (msg.MessageGuid + "" != "")
+                                if (msg.GetGuid() != Guid.Empty)
                                     {
                                         Message tmpMsg;
-                                        if (dicSendedMessages.TryRemove(msg.MessageGuid, out tmpMsg))
+                                        if (dicSendedMessages.TryRemove(msg.GetGuid(), out tmpMsg))
                                         {
-                                            dicRevivedMessages.TryAdd(msg.MessageGuid, msg);
+                                            dicRevivedMessages.TryAdd(msg.GetGuid(), msg);
                                         }
                                     }
                                     this.HandleMessage?.BeginInvoke(this, msg, null, null);
                                 }
                             }).BeginInvoke(msgs, null, null);
 
-                            msgTmp = MessageExt.GetStringNotMessage(msgTmp);
+                            msgTmp = "";// MessageExt.GetStringNotMessage(msgTmp);
                         }
                         e.UserToken = msgTmp;
                     }
@@ -174,7 +174,7 @@ namespace xDM.xNet.xSockets.xSocket
         {
             try
             {
-                SendAsync(msg.ToSendString());
+                SendByteAsync(msg.ToSendByte());
             }
             catch (Exception err)
             {
@@ -199,20 +199,20 @@ namespace xDM.xNet.xSockets.xSocket
             }
             var startTime = DateTime.Now;
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, timeOutMillionSecond);
-            var guid = msg.MessageGuid;
-            if (guid + "" == "")
-                guid = Guid.NewGuid().ToString("N");
+            var guid = msg.GetGuid();
+            if (guid == Guid.Empty)
+                guid = Guid.NewGuid();
             while (!dicSendedMessages.TryAdd(guid, msg))
             {
-                guid = Guid.NewGuid().ToString("N");
+                guid = Guid.NewGuid();
                 if ((DateTime.Now - startTime) > ts)
                 {
                     return null;
                 }
                 Thread.Sleep(10);
             }
-            var oGuid = msg.MessageGuid;
-            msg.MessageGuid = guid;
+            var oGuid = msg.GetGuid();
+            msg.SetGuid(guid);
             SendMessageAsync(msg);
             msg = null;
             while (!dicRevivedMessages.ContainsKey(guid))
@@ -228,16 +228,11 @@ namespace xDM.xNet.xSockets.xSocket
             dicRevivedMessages.TryRemove(guid, out msg);
             if (msg != null)
             {
-                msg.MessageGuid = oGuid;
+                msg.SetGuid(oGuid);
             }
             return msg;
         }
 
-        private void SendAsync(string msgPro)
-        {
-            byte[] data = Encoding.UTF8.GetBytes(msgPro);
-            SendByteAsync(data);
-        }
         private void SendByteAsync(byte[] data)
         {
             try

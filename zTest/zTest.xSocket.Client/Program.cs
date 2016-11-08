@@ -10,31 +10,42 @@ namespace zTest.xSocket.Client
 	{
 		public static void Main(string[] args)
 		{
-			string tmp = "asf\0\ff  ff\0";
-			var seee = tmp.SerializeToByte();
-			var str = tmp.Serializable();
-			Message m = new Message();
-			var strm = m.Serializable();
-			var client = new TcpClientSocket();
-			client.HandleMessage += Client_HandleMessage;
-			if (client.Connect("127.0.0.1", 23456))
-			{				Message msg = new Message();
-				while (true)
-				{
-					sendCount++;
-					Thread.Sleep(1000);
-					if (sendCount % 2 == 0)
-					{
-						msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
-						client.SendMessage(msg, 10000);
-					}
-					else
-					{
-						msg.Value = $"{sendCount}Client: SendMessgaeSync:{DateTime.Now}";
-						client.SendMessageAsync(msg);
-					}
-				}
-			}
+
+            var tCount = 1;
+            while (tCount -- > 0)
+            {
+                new Action(() =>{
+                    var client = new TcpClientSocket();
+                    client.HandleMessage += Client_HandleMessage;
+                    if (client.Connect("127.0.0.1", 23456))
+                    {
+                        Message msg = new Message();
+                        while (true)
+                        {
+                            sendCount++;
+                          //  Thread.Sleep(10);
+                            //if (sendCount % 2 == 0)
+                            {
+                                msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
+                                //client.SendMessage(msg, 10000);
+                            }
+                            //	else
+                            {
+                                msg.Value = $"{sendCount}Client: SendMessgaeSync:{DateTime.Now}";
+                                client.SendMessageAsync(msg);
+                            }
+                        }
+                    }
+                }).BeginInvoke(null,null);
+                Console.WriteLine(tCount);
+                Thread.Sleep(2);
+            }
+            while (true)
+            {
+                Thread.Sleep(100);
+            }
+
+
 		}
 		static int sendCount = 0;
 		static void Client_HandleMessage(TcpClientSocket sender, Message msg)

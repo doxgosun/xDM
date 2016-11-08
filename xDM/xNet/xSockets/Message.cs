@@ -9,30 +9,28 @@ namespace xDM.xNet.xSockets
     [Serializable]
     public class Message
     {
-        public string Sender { get; set; }
-        public string MessageGuid { get; set; }
-        public DateTime Time { get; set; }
+        private byte[] _guid { get; set; }
         public string Action { get; set; }
         public bool Result { get; set; }
-        public string Value { get; set; }
+        public object Value { get; set; }
 
-        public Message()
-        {
-            this.Action = "";
-            this.Result = false;
-            this.Value = "";
-            this.Sender = "";
-            this.MessageGuid = Guid.NewGuid().ToString("N");
-            this.Time = DateTime.MinValue;
-        }
+        public Message() { }
+
         public Message(Guid msgID)
         {
-            this.Action = "";
-            this.Result = false;
-            this.Value = "";
-            this.Sender = "";
-            this.MessageGuid = msgID.ToString("N");
-            this.Time = DateTime.MinValue;
+            this._guid = msgID.ToByteArray();
+        }
+
+        public void SetGuid(Guid gid)
+        {
+            _guid = gid.ToByteArray();
+        }
+
+        public Guid GetGuid()
+        {
+            if(_guid != null)
+                return new Guid(_guid);
+            return Guid.Empty;
         }
     }
 }
