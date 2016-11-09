@@ -39,7 +39,7 @@ namespace xDM.xNet.xSockets.xSocket
         /// </summary>
         public int ReciveBufferSize { get; set; } = 1024 * 2;
         /// <summary>
-        /// 客户端空闲时间，默认一分钟（60000）,超过则断开连接
+        /// 客户端空闲时间(毫秒)，默认一分钟（60000）,超过则断开连接
         /// </summary>
         public int ClientTimeOutMillionSecond { get; set; } = 60000;
         /// <summary>
@@ -186,7 +186,6 @@ namespace xDM.xNet.xSockets.xSocket
             SocketAsyncEventArgs acceptArg = new SocketAsyncEventArgs();
             acceptArg.Completed += AcceptArg_Completed;
             socket.AcceptAsync(acceptArg);
-            eShowMsg?.BeginInvoke("AcceptArg_Completed", null, null);
         }
         private void Recive_Completed(object sender, SocketAsyncEventArgs e)
         {
@@ -198,9 +197,7 @@ namespace xDM.xNet.xSockets.xSocket
                     int rec = e.BytesTransferred;
                     if (rec > 0)
                     {
-                        //var data = e.Buffer.ToArray();
                         byte[] tmp = new byte[rec];
-                        //data.CopyTo(tmp, 0, rec);
                         Array.Copy(e.Buffer, 0, tmp,0, rec);
                         var dataHandler = e.UserToken as TcpServerSocketRecivedDataHandler;
                         dataHandler.dataQueue.Enqueue(tmp);
@@ -298,7 +295,6 @@ namespace xDM.xNet.xSockets.xSocket
                 if (ClientSocketDic.TryGetValue(remoteEndPoint, out kv))
                 {
                     SendByteAsync(kv.Key, msg.ToSendByte());
-                    Thread.Sleep(1);
                 }
             }
             catch (Exception err)
@@ -355,7 +351,7 @@ namespace xDM.xNet.xSockets.xSocket
                         if (ClientSocketDic.TryGetValue(remoteEndPoint, out kv))
                         {
                             DateTime lastReceiveTime = kv.Value;
-                            if ((DateTime.Now - lastReceiveTime).TotalMilliseconds > 60000)
+                            if ((DateTime.Now - lastReceiveTime).TotalMilliseconds > this.ClientTimeOutMillionSecond)
                             {
                                 try
                                 {

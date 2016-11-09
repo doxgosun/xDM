@@ -146,10 +146,12 @@
     <Compile Include="xData\xClient\Factory.cs" />
     <Compile Include="xData\xClient\TextDataReader.cs" />
     <Compile Include="xNet\xSockets\Message.cs" />
+    <Compile Include="xNet\xSockets\xSocket\BaseTcpRecivedDataHandler.cs" />
     <Compile Include="xNet\xSockets\xSocket\Extensions\MyExt.cs" />
     <Compile Include="xNet\xSockets\xSocket\MessageExt.cs" />
     <Compile Include="xNet\xSockets\xSocket\SocketAsyncEventArgsPool.cs" />
     <Compile Include="xNet\xSockets\xSocket\TcpClientSocket.cs" />
+    <Compile Include="xNet\xSockets\xSocket\TcpClientSocketRecivedDataHandler.cs" />
     <Compile Include="xNet\xSockets\xSocket\TcpServerSocket.cs" />
     <Compile Include="xNet\xSockets\xSocket\TcpServerSocketRecivedDataHandler.cs" />
     <Compile Include="xReflection\DelegateBuilder.Constructor.cs" />

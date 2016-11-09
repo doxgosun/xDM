@@ -102,6 +102,16 @@ namespace xDM.xNet.xSockets.xSocket
                     SocketAsyncEventArgs receciveArg = new SocketAsyncEventArgs();
                     byte[] data = new byte[ReciveBufferSize];
                     receciveArg.SetBuffer(data, 0, data.Length);
+
+                    var dataHandler = new TcpClientSocketRecivedDataHandler();
+                    dataHandler.client = this;
+                    dataHandler.server = server;
+                    dataHandler.HandleMessage = this.HandleMessage;
+                    dataHandler.dicSendedMessages = dicSendedMessages;
+                    dataHandler.dicRevivedMessages = dicRevivedMessages;
+
+                    receciveArg.UserToken = dataHandler;
+
                     receciveArg.Completed += Rececive_Completed;
                     cliectSocket.ReceiveAsync(receciveArg);
 
@@ -120,51 +130,23 @@ namespace xDM.xNet.xSockets.xSocket
         {
             try
             {
-                _lastReceiveTime = DateTime.Now;
-                Socket socket = sender as Socket;
+                Socket clientSocket = sender as Socket;
                 if (e.SocketError == SocketError.Success)
                 {
                     int rec = e.BytesTransferred;
                     if (rec > 0)
                     {
-                        var data = e.Buffer.ToArray();
-                        string reMsg = Encoding.UTF8.GetString(data, 0, rec);
-                        string msgTmp = e.UserToken + "" + reMsg;
-                        //msgTmp = msgTmp + reMsg;
-                        Message[] msgs = new Message[0];// MessageExt.GetMessages(msgTmp);
-                        if (msgs.Length > 0)
-                        {
-                            new Action<Message[]>((ms) =>
-                            {
-                                foreach (Message msg in ms)
-                                {
-                                if (msg.GetGuid() != Guid.Empty)
-                                    {
-                                        Message tmpMsg;
-                                        if (dicSendedMessages.TryRemove(msg.GetGuid(), out tmpMsg))
-                                        {
-                                            dicRevivedMessages.TryAdd(msg.GetGuid(), msg);
-                                        }
-                                    }
-                                    this.HandleMessage?.BeginInvoke(this, msg, null, null);
-                                }
-                            }).BeginInvoke(msgs, null, null);
-
-                            msgTmp = "";// MessageExt.GetStringNotMessage(msgTmp);
-                        }
-                        e.UserToken = msgTmp;
-                    }
-                    else
-                    {
-                        int av = socket.Available;
-                        socket.Close();
-                        socket.Dispose();
-                        e.Dispose();
+                        byte[] tmp = new byte[rec];
+                        Array.Copy(e.Buffer, 0, tmp, 0, rec);
+                        var dataHandler = e.UserToken as TcpClientSocketRecivedDataHandler;
+                        dataHandler.dataQueue.Enqueue(tmp);
                     }
                 }
-                socket.ReceiveAsync(e);
+                clientSocket.ReceiveAsync(e);
             }
-            catch { }
+            catch
+            {
+            }
         }
         /// <summary>
         /// 异步发送信息

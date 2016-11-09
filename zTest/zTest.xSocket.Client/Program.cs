@@ -20,10 +20,13 @@ namespace zTest.xSocket.Client
                     if (client.Connect("127.0.0.1", 23456))
                     {
                         Message msg = new Message();
-                        while (true)
+                        client.SendMessageAsync(msg);
+                        var loop = 10000000000;
+                        Thread.Sleep(1000);
+                        while (loop-- > 0)
                         {
                             sendCount++;
-                            //Thread.Sleep(1);
+                         //   Thread.Sleep(1);
                             //if (sendCount % 2 == 0)
                             {
                                 msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
@@ -42,7 +45,7 @@ namespace zTest.xSocket.Client
             }
             while (true)
             {
-				Console.WriteLine(sendCount);
+				Console.WriteLine($"发出：{sendCount}  收到：{recCount}");
 				//sendCount = 0;
                 Thread.Sleep(1000);
             }
@@ -50,9 +53,13 @@ namespace zTest.xSocket.Client
 
 		}
 		static int sendCount = 0;
+        static int recCount = 0;
+        static object lck = new object();
 		static void Client_HandleMessage(TcpClientSocket sender, Message msg)
 		{
-			Console.WriteLine($"收到的信息为：{msg.Value}");
+            lock(lck)
+            recCount++;
+			//Console.WriteLine($"收到的信息为：{msg.Value}");
 		}
 	}
 }

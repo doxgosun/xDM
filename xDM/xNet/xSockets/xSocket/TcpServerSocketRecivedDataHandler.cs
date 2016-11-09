@@ -36,7 +36,7 @@ namespace xDM.xNet.xSockets.xSocket
 					ClientSocketDic.TryUpdate(clientSocket.RemoteEndPoint + "", newKv, kv);
 				}
 			}
-			this.HandleMessage?.BeginInvoke(server, clientSocket.RemoteEndPoint.ToString(), msg, null, null);
+            this.HandleMessage?.BeginInvoke(server, clientSocket.RemoteEndPoint.ToString(), msg, null, null);
 		}
 	}
 }

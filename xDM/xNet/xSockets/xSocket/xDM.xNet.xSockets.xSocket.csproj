@@ -89,6 +89,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocketAsyncEventArgsPool.cs" />
     <Compile Include="TcpClientSocket.cs" />
+    <Compile Include="TcpClientSocketRecivedDataHandler.cs" />
     <Compile Include="TcpServerSocket.cs" />
     <Compile Include="TcpServerSocketRecivedDataHandler.cs" />
     <Compile Include="BaseTcpRecivedDataHandler.cs" />

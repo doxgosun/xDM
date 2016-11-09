@@ -23,17 +23,18 @@ namespace xDM.xNet.xSockets.xSocket
 
 		public BaseTcpRecivedDataHandler()
 		{
-			Thread thd = new Thread(hdBytes);
+			StartHandleMsgBytesThread();
+			Thread thd = new Thread(hdData);
 			thd.IsBackground = true;
 			thd.Start();
-			StartHandleMsgBytesThread();
 		}
 
+        private int _maxHdMsgThreadCount = 4;
 		private int hdMsgThredCount = 0;
 		private object hdMsgThreadLock = new object();
 		private void StartHandleMsgBytesThread()
 		{
-			if (hdMsgThredCount > 4)
+			if (hdMsgThredCount > _maxHdMsgThreadCount)
 				return;
 			lock (hdMsgThreadLock)
 			{
@@ -44,7 +45,7 @@ namespace xDM.xNet.xSockets.xSocket
 			thdMsg.Start();
 		}
 
-		private void hdBytes()
+		private void hdData()
 		{
 			DateTime workTime = DateTime.Now;
 			TimeSpan ts = new TimeSpan(0, 1, 0);
@@ -77,12 +78,10 @@ namespace xDM.xNet.xSockets.xSocket
 							tmpByte = addMsgObjBytes(tmp, 0, ref msgObj, ref reciveObjLength);
 						}
 					}
-					// Thread.Sleep(1);
 				}
 				Thread.Sleep(1);
 			}
 		}
-
 		private byte[] addMsgObjBytes(byte[] d, int index, ref byte[] msgObj, ref int reciveObjLength)
 		{
 			byte[] tmpByte = new byte[0];
@@ -163,9 +162,16 @@ namespace xDM.xNet.xSockets.xSocket
 				}
 				while (msgBytesQueue.Count > 0)
 				{
-					if (hdMsgThredCount < 4 && msgBytesQueue.Count > 1000)
-						StartHandleMsgBytesThread();
-					byte[] msgBytes;
+                    if (hdMsgThredCount < _maxHdMsgThreadCount && msgBytesQueue.Count > 1000)
+                    {
+                        new Action(() =>
+                        {
+                            Thread.Sleep(2000);
+                            if (hdMsgThredCount < _maxHdMsgThreadCount && msgBytesQueue.Count > 1000)
+                                StartHandleMsgBytesThread();
+                        }).BeginInvoke(null, null);
+                    }
+                    byte[] msgBytes;
 					if (msgBytesQueue.TryDequeue(out msgBytes))
 					{
 						var msg = MessageExt.GetMessage(msgBytes);
@@ -175,9 +181,7 @@ namespace xDM.xNet.xSockets.xSocket
 							{
 								Message tmpMsg;
 								if (dicSendedMessages.TryRemove(msg.GetGuid(), out tmpMsg))
-								{
 									dicRevivedMessages.TryAdd(msg.GetGuid(), msg);
-								}
 							}
 						}
 						hdMsg(msg);
@@ -186,7 +190,6 @@ namespace xDM.xNet.xSockets.xSocket
 				Thread.Sleep(1);
 			}
 		}
-
 		protected abstract void hdMsg(Message msg);
 	}
 }
