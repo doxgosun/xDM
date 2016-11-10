@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{6CC4E9AE-64EA-41C8-9058-6B2829CA1F57}|Default">
   <MonoDevelop.Ide.ItemProperties.zTest.xSocket.Client PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/Extensions/MyExt.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs">
     <Files>
-      <File FileName="zTest/zTest.xSocket.Client/Program.cs" Line="22" Column="23" />
+      <File FileName="zTest/zTest.xSocket.Client/Program.cs" Line="63" Column="28" />
       <File FileName="zTest/zTest.xSocket.Server/Program.cs" Line="1" Column="1" />
-      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="383" Column="30" />
-      <File FileName="xDM/xNet/xSockets/xSocket/BaseTcpRecivedDataHandler.cs" Line="87" Column="54" />
-      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocketRecivedDataHandler.cs" Line="15" Column="22" />
-      <File FileName="xDM/xNet/xSockets/xSocket/Extensions/MyExt.cs" Line="44" Column="24" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpServerSocket.cs" Line="16" Column="3" />
+      <File FileName="xDM/xNet/xSockets/xSocket/Extensions/MyExt.cs" Line="44" Column="37" />
+      <File FileName="xDM/xNet/xSockets/xSocket/SocketAsyncEventArgsPool.cs" Line="31" Column="27" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpClientSocket.cs" Line="27" Column="53" />
+      <File FileName="xDM/xNet/xSockets/xSocket/TcpBaseSocket.cs" Line="20" Column="40" />
+      <File FileName="xDM/xNet/xSockets/xSocket/ClientInfo.cs" Line="21" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.zTest.WinForm PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/gosun/Documents/GitHub/xDM/zTest/zTest.xSocket.Client/Program.cs" line="18" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="zTest/zTest.xSocket.Client/Program.cs" line="20" offsetX="292" offsetY="285" expression="sendCount" liveUpdate="False" />

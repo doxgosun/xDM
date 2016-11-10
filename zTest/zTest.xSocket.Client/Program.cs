@@ -21,7 +21,7 @@ namespace zTest.xSocket.Client
                     if (client.Connect("127.0.0.1", 23456))
                     {
                         Message msg = new Message();
-                        client.SendMessageAsync(msg);
+                        //client.SendMessageAsync(msg);
                         var loop = 10000;
                         Thread.Sleep(1000);
                         while (loop-- > 0)
@@ -32,7 +32,7 @@ namespace zTest.xSocket.Client
                           //  if (sendCount % 2 == 0)
                             {
                                 msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
-                               // client.SendMessage(msg, 10000);
+                                //client.SendMessage(msg, 10000);
                             }
                         //    	else
                             {

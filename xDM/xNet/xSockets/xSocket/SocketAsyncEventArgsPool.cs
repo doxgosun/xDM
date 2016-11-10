@@ -25,8 +25,10 @@ namespace xDM.xNet.xSockets.xSocket
                 return saea;
             }
 
-            private void Saea_Completed(object sender, SocketAsyncEventArgs e)
-            {
+			private void Saea_Completed(object sender, SocketAsyncEventArgs e)
+			{
+				e.SetBuffer(new byte[0], 0, 0);
+				e.AcceptSocket = null;
                 Push(e);
             }
 

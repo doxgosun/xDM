@@ -94,6 +94,7 @@
     <Compile Include="TcpServerSocket.cs" />
     <Compile Include="TcpServerSocketRecivedDataHandler.cs" />
     <Compile Include="BaseTcpRecivedDataHandler.cs" />
+    <Compile Include="ClientInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

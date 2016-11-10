@@ -10,18 +10,8 @@ using System.Threading.Tasks;
 
 namespace xDM.xNet.xSockets.xSocket
 {
-    public class TcpClientSocket : IDisposable
+    public class TcpClientSocket :TcpBaseSocket, IDisposable
     {
-        public event Action<string> eShowMsg;
-        /// <summary>
-        /// 接收信息BufferSize
-        /// </summary>
-        public int ReciveBufferSize { get; set; } = 1024 * 1;
-
-        private Socket socket { get; set; } = null;
-
-        public EndPoint RemoteEndPoint { get { return socket?.RemoteEndPoint; } }
-
         private DateTime _lastReceiveTime { get; set; } = DateTime.Now;
         public DateTime LastReceiveTime { get { return _lastReceiveTime; } }
         private bool _ConnectCompleted { get; set; } = false;
@@ -30,13 +20,6 @@ namespace xDM.xNet.xSockets.xSocket
         /// 处理信息 sender, message
         /// </summary>
         public event Action<TcpClientSocket, Message> HandleMessage;
-        /// <summary>
-        /// 处理错误
-        /// </summary>
-        public event Action<TcpClientSocket, Exception> onError;
-        ConcurrentDictionary<Guid, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
-        ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
-
         public TcpClientSocket()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -237,5 +220,10 @@ namespace xDM.xNet.xSockets.xSocket
         {
             socket.Dispose();
         }
-    }
+
+		protected override void SendByteAsyncFailed(Socket worksocket, string message)
+		{
+			
+		}
+	}
 }

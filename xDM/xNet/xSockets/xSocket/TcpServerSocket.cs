@@ -11,71 +11,12 @@ using xDM.xNet.xSockets.xSocket.Extensions;
 
 namespace xDM.xNet.xSockets.xSocket
 {
-    public class TcpServerSocket : IDisposable
+    public class TcpServerSocket :TcpBaseSocket, IDisposable
     {
-        public class ClientInfo
-        {
-            private Socket _socket { get; set; }
-            public Socket socket { get { return _socket; } set { _socket = value;RemoteEndPoint = _socket?.RemoteEndPoint + ""; } }
-            public string RemoteEndPoint { get; set; }
-            public SocketAsyncEventArgs ReciveArgs { get; set; }
-            public TcpServerSocketRecivedDataHandler ReciveHandler { get; set; }
-            public DateTime LastWorkingTime { get; set; }
-
-            private ClientInfo()
-            {
-                ReciveHandler = new TcpServerSocketRecivedDataHandler();
-            }
-
-            private static readonly ConcurrentQueue<ClientInfo> infoQueue = new ConcurrentQueue<ClientInfo>();
-            public static ClientInfo Get()
-            {
-                ClientInfo info = null;
-                if (infoQueue.Count == 0 || !infoQueue.TryDequeue(out info))
-                {
-                    info = new ClientInfo();
-                }
-                if (infoQueue.Count < 2)
-                    new Action(()=> {
-                        var count = 8;
-                        while (--count>0)
-                        {
-                            infoQueue.Enqueue(new ClientInfo());
-                        }
-                    }).BeginInvoke(null, null);
-                return info;
-            }
-            public static void Push(ClientInfo info)
-            {
-                if(info != null)
-                    infoQueue.Enqueue(info);
-            }
-        }
-
-        Socket socket { get; set; } = null;
-        public EndPoint RemoteEndPoint { get { return socket?.RemoteEndPoint; } }
-
-        /// <summary>
-        /// 显示信息
-        /// </summary>
-        public event Action<string> eShowMsg;
-
-        /// <summary>
-        /// 处理接收到的信息sender,remoteEndPoint,Messgae
-        /// </summary>
-        public event Action<TcpServerSocket, string, Message> HandleMessage;
-        /// <summary>
-        /// 处理发生错误
-        /// </summary>
-        public event Action<object, Exception> onError;
-        /// <summary>
-        /// 发送BufferSize
-        /// </summary>
-        public int SendBufferSize { get; set; } = 1024;
-        /// <summary>
-        /// 接收BufferSize
-        /// </summary>
-        public int ReciveBufferSize { get; set; } = 1024 * 2;
+		/// <summary>
+		/// 处理接收到的信息sender,remoteEndPoint,Messgae
+		/// </summary>
+		public event Action<TcpServerSocket, string, Message> HandleMessage;
         /// <summary>
         /// 客户端空闲时间(毫秒)，默认一分钟（60000）,超过则断开连接
         /// </summary>
@@ -90,20 +31,11 @@ namespace xDM.xNet.xSockets.xSocket
         protected ConcurrentDictionary<Socket, ClientInfo> ClientInfosDic { get; set; } = new ConcurrentDictionary<Socket, ClientInfo>();
         protected ConcurrentDictionary<string, Socket> ClientSockets { get; set; } = new ConcurrentDictionary<string, Socket>();
 
-        /// <summary>
-        /// 发送信息缓存
-        /// </summary>
-        ConcurrentDictionary<Guid, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
-        /// <summary>
-        /// 接收信息缓存
-        /// </summary>
-        ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
-
         private bool _exit = false;
 
         public TcpServerSocket()
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+			socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
         /// <summary>
         /// 绑定端口号
@@ -118,7 +50,7 @@ namespace xDM.xNet.xSockets.xSocket
                 socket.Bind(serverIp);
                 return true;
             }
-            catch (Exception err)
+            catch
             {
                 return false;
             }
@@ -229,11 +161,7 @@ namespace xDM.xNet.xSockets.xSocket
             Socket clientSocket = e.AcceptSocket;
             e.AcceptSocket = null;
             socket.AcceptAsync(e);
-
             new Task((obj)=> { NewClientAccept(clientSocket); },clientSocket, TaskCreationOptions.None).Start();
-            //Thread tClient = new Thread(new ParameterizedThreadStart(NewClientAccept));
-            //tClient.IsBackground = true;
-            //tClient.Start(clientSocket);
         }
         private void ReciveArgs_Completed(object sender, SocketAsyncEventArgs e)
         {
@@ -284,11 +212,12 @@ namespace xDM.xNet.xSockets.xSocket
         /// <param name="msg"></param>
         /// <param name="timeOutMillionSecond"></param>
         /// <returns></returns>
-        public Message SendMessage(string remoteEndPoint, Message msg, int timeOutMillionSecond)
+		public bool SendMessage(string remoteEndPoint, Message msg,out Message resultMsg, int timeOutMillionSecond)
         {
+			resultMsg = null;
             if (msg == null)
             {
-                return msg;
+				return false;
             }
             if (timeOutMillionSecond < 0)
             {
@@ -307,29 +236,29 @@ namespace xDM.xNet.xSockets.xSocket
                 guid = Guid.NewGuid();
                 if ((DateTime.Now - startTime) > ts)
                 {
-                    return null;
+					return false;
                 }
                 Thread.Sleep(10);
             }
             var oGuid = msg.GetGuid();
             msg.SetGuid(guid);
             SendMessageAsync(remoteEndPoint, msg);
-            msg = null;
-            while (!dicRevivedMessages.TryRemove(guid, out msg))
+			while (!dicRevivedMessages.TryRemove(guid, out resultMsg))
             {
                 if ((DateTime.Now - startTime) > ts)
                 {
-                    if (dicSendedMessages.TryRemove(guid, out msg))
-                        msg = null;
-                    return null;
+					if (dicSendedMessages.TryRemove(guid, out resultMsg))
+						resultMsg = null;
+					return false;
                 }
                 Thread.Sleep(10);
             }
-            if (msg != null)
+			if (resultMsg != null)
             {
-                msg.SetGuid(oGuid);
+				resultMsg.SetGuid(oGuid);
+				return true;
             }
-            return msg;
+			return false;
         }
 
         /// <summary>
@@ -338,35 +267,16 @@ namespace xDM.xNet.xSockets.xSocket
         /// <param name="remoteEndPoint">客户端的remoteEndPoint</param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public void SendMessageAsync(string remoteEndPoint, Message msg)
+		public bool SendMessageAsync(string remoteEndPoint, Message msg)
         {
             var clientSocket = GetClientSocket(remoteEndPoint);
             if (clientSocket != null)
-                SendByteAsync(clientSocket, msg.ToSendByte());
+				return SendByteAsync(clientSocket, msg.ToSendByte());
+			return false;
         }
 
 
-        private void SendByteAsync(Socket worksocket, byte[] data)
-        {
-            if (worksocket == null)
-                return;
-            try
-            {
-                SocketAsyncEventArgs sendArg = SocketAsyncEventArgsPool.SendPool.Get();
-                sendArg.SetBuffer(data, 0, data.Length);
-                if (!worksocket.SendAsync(sendArg))
-                    DisposeClient(worksocket,"关闭无法发送信息连接");
-            }
-            catch (Exception err)
-            {
-                DisposeClient(worksocket, err.Message);
-                onError?.BeginInvoke(this, err, null, null);
-                if (err.GetType() == typeof(SocketException))
-                {
 
-                }
-            }
-        }
 
         private void Watcher()
         {
@@ -384,22 +294,22 @@ namespace xDM.xNet.xSockets.xSocket
             }
         }
 
-        private void DisposeClient(Socket socket,string message)
+        private void DisposeClient(Socket worksocket,string message)
         {
-            if (socket == null)
+            if (worksocket == null)
                 return;
             try
             {
                 ClientInfo ci = null;
-                if (ClientInfosDic.TryRemove(socket, out ci))
+                if (ClientInfosDic.TryRemove(worksocket, out ci))
                 {
                     eShowMsg?.BeginInvoke($"{message}：{ci.RemoteEndPoint}", null, null);
                     ci.ReciveHandler.Stop();
-                    ClientSockets.TryRemove(ci.RemoteEndPoint,out socket);
+                    ClientSockets.TryRemove(ci.RemoteEndPoint,out worksocket);
                 }
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-                socket.Dispose();
+                worksocket.Shutdown(SocketShutdown.Both);
+                worksocket.Close();
+                worksocket.Dispose();
             }
             catch { }
         }
@@ -407,7 +317,12 @@ namespace xDM.xNet.xSockets.xSocket
         public void Dispose()
         {
             _exit = true;
-            socket.Dispose();
+			socket.Dispose();
         }
-    }
+
+		protected override void SendByteAsyncFailed(Socket worksocket, string message)
+		{
+			DisposeClient(worksocket, message);
+		}
+	}
 }

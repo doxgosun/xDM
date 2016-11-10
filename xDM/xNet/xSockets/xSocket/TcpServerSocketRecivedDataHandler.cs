@@ -20,7 +20,7 @@ namespace xDM.xNet.xSockets.xSocket
         /// <summary>
         /// 所有连接的客户端，RemoteEndPoint，Socket,DateTime
         /// </summary>
-        public ConcurrentDictionary<Socket, TcpServerSocket.ClientInfo> ClientSocketDic { get; set; }
+        public ConcurrentDictionary<Socket, ClientInfo> ClientSocketDic { get; set; }
 
 		protected override void hdMsg(Message msg)
 		{
@@ -29,7 +29,7 @@ namespace xDM.xNet.xSockets.xSocket
 
         protected override void HeartBeat()
         {
-            TcpServerSocket.ClientInfo clientInfo = null;
+            ClientInfo clientInfo = null;
             if (ClientSocketDic.TryGetValue(clientSocket, out clientInfo))
             {
                 clientInfo.LastWorkingTime = DateTime.Now;
