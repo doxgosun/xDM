@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace xDM.xNet.xSockets.xSocket
 {
@@ -16,23 +17,13 @@ namespace xDM.xNet.xSockets.xSocket
             public SocketAsyncEventArgs Get()
             {
                 SocketAsyncEventArgs saea = null;
-                if (!m_completed_queue.TryDequeue(out saea))
+                if (m_completed_queue.Count == 0 || !m_completed_queue.TryDequeue(out saea))
                 {
                     saea = new SocketAsyncEventArgs();
                     saea.Completed += Saea_Completed;
                 }
                 return saea;
             }
-            //public SocketAsyncEventArgs Get(EventHandler handler)
-            //{
-            //    SocketAsyncEventArgs saea = null;
-            //    if (!m_completed_queue.TryDequeue(out saea))
-            //    {
-            //        saea = new SocketAsyncEventArgs();
-            //        saea.Completed += Saea_Completed;
-            //    }
-            //    return saea;
-            //}
 
             private void Saea_Completed(object sender, SocketAsyncEventArgs e)
             {
@@ -47,11 +38,5 @@ namespace xDM.xNet.xSockets.xSocket
 
         private static Pool m_send_pool = new Pool();
         public static Pool SendPool { get { return m_send_pool; } }
-
-        //private static Pool m_recive_pool = new Pool();
-        //public static Pool RecivePool { get { return m_recive_pool; } }
-
-        //private static Pool m_Accept_pool = new Pool();
-        //public static Pool AcceptPool { get { return m_Accept_pool; } }
     }
 }

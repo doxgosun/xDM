@@ -36,38 +36,44 @@ namespace zTest.xSocket.Server
             server.eShowMsg += (s) => { Console.WriteLine(s); };
 			if (server.Bind(23456))
 				server.Listen();
-			while (true)
+            int lastSended = 0, lastRec = 0;
+            while (true)
 			{
-              //  if (rp != null)
+             //   if (rp != null)
                 {
-             //       server.SendMessageAsync(rp,msg);
+            //        server.SendMessageAsync(msg);
+           //         Thread.Sleep(1);
                 }
-        //        else
+          //      else
                 {
                     Thread.Sleep(1000);
-                    Console.WriteLine($"收到：{reCount}  发出：{sendCount}");
+                    Console.WriteLine($"收到：{recCount}  发出：{sendCount}");
+                    Console.Title = $"接收：{recCount - lastRec}  发出：{sendCount - lastSended}  客户端：{server.ClientCount}";
+                    lastRec = recCount;
+                    lastSended = sendCount;
                 }
                 //reCount = 0;
             }
 		}
         static string rp = null;
-		static int reCount = 0;
+		static int recCount = 0;
         static int sendCount = 0;
         static object lck = new object();
         static object lck2 = new object();
 		static void Server_HandleMessage(TcpServerSocket sender, string repoint, Message msg)
 		{
-       //     if (rp == null)
-        //        rp = repoint;
-       //     lock(lck)
-			    reCount++;
+           // if (rp == null)
+                rp = repoint;
+            lock(lck)
+			    recCount++;
+           // Thread.Sleep(1);
             //return;
 			//Console.WriteLine($"收到的信息为：{msg.Value}");
 		//	if (reCount % 2 == 0)
 			{
 				//msg.Value = $"{reCount}Server:SendMessageAsync:{DateTime.Now}";
-				sender.SendMessageAsync(repoint, msg);
-             //   lock(lck2)
+				sender.SendMessageAsync(repoint,msg);
+                lock(lck2)
                     sendCount++;
 			}
 	//		else

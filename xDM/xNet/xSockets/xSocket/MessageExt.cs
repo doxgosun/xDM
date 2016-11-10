@@ -13,17 +13,26 @@ namespace xDM.xNet.xSockets.xSocket
 
         public static byte[] ToSendByte(this Message msg)
         {
+            //包格式：（包头-6字节48位）（包体）
+            //包格式：（1111 1111）（00）（10 1111 ... 1111）（1011）（11。。00011）
+            //包说明：开始标志0xff 包类型       包长度         校验       数据体  
+            //其中：开始标志 8位：固定为0xff
+            //      包类型   2位：00数据 01文件 10 预留 11心跳,心跳包没有数据体
+            //      包长度  30位：最大为1G 数据类型的包包长度表示数据大小，文件包表示文件编号
+            //      校验     8位：b[5] = (b[1]+b[2]+b[3]+b[4])/4
             if (msg == null) return null;
             var bytes = msg.SerializeToByte();
             var len = bytes.Length;
-            if (len > Math.Pow(2, 31))
-                throw new Exception("对象大小超过2G!");
-            byte[] sendBytes = new byte[len + 4];
-            sendBytes[0] = (Byte)((len & 0x7f000000) >> 24);
-            sendBytes[1] = (Byte)((len & 0xff0000) >> 16);
-            sendBytes[2] = (Byte)((len & 0xff00) >> 8);
-            sendBytes[3] = (Byte)(len & 0xff);
-            Array.Copy(bytes, 0, sendBytes, 4, len);
+            if (len > Math.Pow(2, 30))
+                throw new Exception("对象大小超过1G!");
+            byte[] sendBytes = new byte[len + 6];
+            sendBytes[0] = 0xff;
+            sendBytes[1] = (byte)((len & 0x3f000000) >> 24);
+            sendBytes[2] = (byte)((len & 0xff0000) >> 16);
+            sendBytes[3] = (byte)((len & 0xff00) >> 8);
+            sendBytes[4] = (byte)(len & 0xff);
+            sendBytes[5] = (byte)((sendBytes[1] + sendBytes[2] + sendBytes[3] + sendBytes[4]) / 4);
+            Array.Copy(bytes, 0, sendBytes, 6, len);
             return sendBytes;
         }
 

@@ -109,6 +109,7 @@ namespace xDM.xNet.xSockets.xSocket
                     dataHandler.HandleMessage = this.HandleMessage;
                     dataHandler.dicSendedMessages = dicSendedMessages;
                     dataHandler.dicRevivedMessages = dicRevivedMessages;
+                    dataHandler.Start();
 
                     receciveArg.UserToken = dataHandler;
 
@@ -116,7 +117,6 @@ namespace xDM.xNet.xSockets.xSocket
                     cliectSocket.ReceiveAsync(receciveArg);
 
                 }));
-                t.Priority = ThreadPriority.Highest;
                 t.IsBackground = true;
                 t.Start(client);
 

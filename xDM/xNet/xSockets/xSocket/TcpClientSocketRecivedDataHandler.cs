@@ -25,7 +25,12 @@ namespace xDM.xNet.xSockets.xSocket
             {
                 updateTime = DateTime.Now;
             }
-            this.HandleMessage?.BeginInvoke(client, msg, null, null);
+            this.HandleMessage.Invoke(client, msg);
+        }
+
+        protected override void HeartBeat()
+        {
+            
         }
     }
 }

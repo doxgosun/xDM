@@ -88,6 +88,7 @@
     <Compile Include="Extensions\MyExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocketAsyncEventArgsPool.cs" />
+    <Compile Include="TcpBaseSocket.cs" />
     <Compile Include="TcpClientSocket.cs" />
     <Compile Include="TcpClientSocketRecivedDataHandler.cs" />
     <Compile Include="TcpServerSocket.cs" />
