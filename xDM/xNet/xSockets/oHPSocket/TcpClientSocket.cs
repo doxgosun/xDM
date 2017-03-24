@@ -53,6 +53,8 @@ namespace xDM.xNet.xSockets.oHPSocket
         private HandleResult Client_OnReceive(TcpClient sender, byte[] bytes)
         {
             _lastReceiveTime = DateTime.Now;
+            if (bytes == null || bytes.Length == 0)
+                return HandleResult.Ok;
             var msg = bytes.DeDeserialize<Message>();
             if (msg != null)
             {

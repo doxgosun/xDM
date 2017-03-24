@@ -304,7 +304,8 @@ namespace xDM.xData.xClient
             client.ConnectionTimeout = this.ConnectionTimeout;
             for (int i = 0; i < this.Parameters.Count; i++)
             {
-                client.Parameters.Add(this.Parameters[i]);
+                var p = this.Parameters[i] as IDataParameter;
+                client.Parameters.AddWithValue(p.ParameterName,p.Value);
             }
             return client;
         }

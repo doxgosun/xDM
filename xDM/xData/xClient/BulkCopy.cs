@@ -26,6 +26,8 @@ namespace xDM.xData.xClient
         #region 属性
         public string DbType { get { return this._client.DbType; } }
         private DataClient _client { get; set; }
+
+        public object UserToken { get; set; }
         
         /// <summary>
         /// 每一批次中的行数。在每一批次结束时，将该批次中的行发送到服务器。如果未设置任何值，则为10000。
@@ -151,9 +153,8 @@ namespace xDM.xData.xClient
             Delegate d = Delegate.CreateDelegate(delType, this, concreteDoEventMethod);
             evt.AddEventHandler(copyer,d);
 
-            oType.GetMethod("WriteToServer").Invoke(copyer, args);
-            oType.GetMethod("Dispose").Invoke(copyer, null);
-
+            var wtServer = oType.GetMethod("WriteToServer",DelegateBuilder.GetParamsTypesFromParameters(args));
+            wtServer.Invoke(copyer, args);
             return _completedCount;
         }
 

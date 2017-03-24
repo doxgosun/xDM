@@ -130,16 +130,25 @@ namespace xDM.xData.xClient
                 ifTran = false;
             }
             this._client.CommandText = $" INSERT INTO {DestinationTableName} ({strNames}) VALUES ({strParaNames}) ";
+            var colCount = dtServer.Columns.Count;
             for (int iRow = 0; iRow < dtServer.Rows.Count; iRow++)
             {
-                this._client.Parameters.Clear();
                 if (iRow % this.NotifyAfter == 0)
                 {
                     this.RowsCopied?.BeginInvoke(this, new RowsCopiedEventArgs(iRow), null, null);
                 }
-                for (int iCol = 0; iCol < dtServer.Columns.Count; iCol++)
+                for (int iCol = 0; iCol < colCount; iCol++)
                 {
-                    this._client.Parameters.AddWithValue(paraNames[iCol], dtServer.Rows[iRow][iCol]);
+                    object val = dtServer.Rows[iRow][iCol];
+                    if (this._client.Parameters.Count < colCount)
+                    {
+                        this._client.Parameters.AddWithValue(paraNames[iCol], val);
+                    }
+                    else
+                    {
+                        var p = this._client.Parameters[iCol] as IDataParameter;
+                        p.Value = val;
+                    }
                 }
                 try
                 {
@@ -225,7 +234,6 @@ namespace xDM.xData.xClient
             while (reader.Read())
             {
                 intReaded++;
-                //count++;
                 if (this.RowsCopied != null && this.NotifyAfter != 0)
                 {
                     if (this.NotifyAfter > 0 && intReaded % this.NotifyAfter == 0)
@@ -233,18 +241,17 @@ namespace xDM.xData.xClient
                         this.RowsCopied?.BeginInvoke(this, new RowsCopiedEventArgs(intReaded), null, null);
                     }
                 }
-                string strValuess = "";
                 for (int iCol = 0; iCol < desIndexs.Length; iCol++)
                 {
                     object val = reader[desIndexs[iCol]];
-                    //    if (this._client.Parameters.Count < desIndexs.Length)
+                    if (this._client.Parameters.Count < desIndexs.Length)
                     {
                         this._client.Parameters.AddWithValue(paraNames[iCol], val);
                     }
-                    //        else
+                    else
                     {
-                        //            var p = this._client.Parameters[iCol] as IDataParameter;
-                        //            p.Value = val;
+                        var p = this._client.Parameters[iCol] as IDataParameter;
+                        p.Value = val;
                     }
 
                 }
@@ -553,10 +560,10 @@ namespace xDM.xData.xClient
                             continue;
                         }
                     }
-                    if (list.Count != dtServer.Columns.Count)
-                    {
-                        throw new Exception("目标字段和源字段没有一一对应！");
-                    }
+                    //if (list.Count != dtServer.Columns.Count)
+                    //{
+                    //    throw new Exception("目标字段和源字段没有一一对应！");
+                    //}
                 }
                 catch
                 {
@@ -1258,7 +1265,9 @@ namespace xDM.xData.xClient
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this._client.Dispose();
+            this._columnMappings = null;
+            this.RowsCopied = null;
         }
     }
 }

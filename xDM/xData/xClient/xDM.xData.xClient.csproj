@@ -9,8 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>xDM.xData.xClient</RootNamespace>
     <AssemblyName>xDM.xData.xClient</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,6 +89,7 @@
     <Compile Include="BulkColumnMappingCollection.cs" />
     <Compile Include="BulkCopy.cs" />
     <Compile Include="BulkLoader.cs" />
+    <Compile Include="ClientPool.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="DataClient.cs" />
     <Compile Include="DbTypes.cs" />

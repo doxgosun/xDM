@@ -32,11 +32,24 @@ namespace zTest.xSocket.Server
             Message msg = new Message();
 
             var server = new TcpServerSocket();
-			server.HandleMessage += Server_HandleMessage;
-            server.eShowMsg += (s) => { Console.WriteLine(s); };
+            //server.eShowMsg += Server_eShowMsg;
+			//server.HandleMessage += Server_HandleMessage;
+            server.OnError += Server_OnError;
 			if (server.Bind(23456))
 				server.Listen();
             int lastSended = 0, lastRec = 0;
+            new Action<TcpServerSocket>((s)=> {
+                while (true)
+                {
+                  //  while (sendCount < recCount)
+                    {
+                        //lock (lck2)
+                            //sendCount += s.SendMessageAsync(msg);
+                     //   Thread.Sleep(1);
+                    }
+                    Thread.Sleep(10);
+                }
+            }).BeginInvoke(server, null, null);
             while (true)
 			{
              //   if (rp != null)
@@ -47,7 +60,7 @@ namespace zTest.xSocket.Server
           //      else
                 {
                     Thread.Sleep(1000);
-                    Console.WriteLine($"收到：{recCount}  发出：{sendCount}");
+                    Console.WriteLine($"收到：{recCount}  发出：{sendCount}  客户端：{server.ClientCount}");
                     Console.Title = $"接收：{recCount - lastRec}  发出：{sendCount - lastSended}  客户端：{server.ClientCount}";
                     lastRec = recCount;
                     lastSended = sendCount;
@@ -55,6 +68,17 @@ namespace zTest.xSocket.Server
                 //reCount = 0;
             }
 		}
+
+        private static void Server_OnError(object sender, Exception err)
+        {
+            Console.WriteLine($"{err.Message}\r\n{err.StackTrace}\r\n---------------------------------\r\n");
+        }
+
+        private static void Server_eShowMsg(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         static string rp = null;
 		static int recCount = 0;
         static int sendCount = 0;
@@ -72,9 +96,9 @@ namespace zTest.xSocket.Server
 		//	if (reCount % 2 == 0)
 			{
 				//msg.Value = $"{reCount}Server:SendMessageAsync:{DateTime.Now}";
-				sender.SendMessageAsync(repoint,msg);
-                lock(lck2)
-                    sendCount++;
+				if(sender.SendMessageAsync(repoint,msg))
+                    lock(lck2)
+                        sendCount++;
 			}
 	//		else
 			{

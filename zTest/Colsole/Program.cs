@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using xDM.xNet.xSockets;
 using System.Data.SqlClient;
 using xDM.xData.xClient;
-using xDM.xNet.xSockets.xSocket;
 
 namespace zTest.Colsole
 {
@@ -15,11 +14,10 @@ namespace zTest.Colsole
         static void Main(string[] args)
         {
 
-			TcpServerSocket server = new TcpServerSocket();
-			if(server.Bind(8876))
-				server.Listen(100);
-
-            //TestDelegateBuilder.Test();
+            using (DataClient client = new DataClient(ClientType.Vertica))
+            {
+                client.SetConnectionString("10.202.196.52", -1, "dbadmin", "gtgaj", "smz");
+            }
             Console.ReadKey();
         }
     }

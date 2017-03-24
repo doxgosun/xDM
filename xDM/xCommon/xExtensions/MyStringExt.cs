@@ -93,6 +93,24 @@ namespace xDM.xCommon.xExtensions
             return a.Distinct();
         }
 
+        static Regex regNum = new Regex(@"\d+");
+        public static bool IsNumbers(this string s)
+        {
+            var m = regNum.Match(s);
+            if (m.Success)
+            {
+                if (m.Value == s)
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool HasNumbers(this string s)
+        {
+            var m = regNum.Match(s);
+            return m.Success;
+        }
+
         /// <summary>
         /// 以指定字符分割数组
         /// </summary>

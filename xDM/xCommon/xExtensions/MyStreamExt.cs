@@ -6,7 +6,7 @@ using System.Text;
 
 namespace xDM.xCommon.xExtensions
 {
-    static class MyStreamExt
+    public static class MyStreamExt
     {
         public static byte[] ToByteArray(this Stream sem)
         {

@@ -13,11 +13,11 @@ namespace xDM.xNet.xSockets.xSocket
     {
         public class Pool
         {
-            private ConcurrentQueue<SocketAsyncEventArgs> m_completed_queue = new ConcurrentQueue<SocketAsyncEventArgs>();
-            public SocketAsyncEventArgs Get()
+            private ConcurrentBag<SocketAsyncEventArgs> m_completed_pool = new ConcurrentBag<SocketAsyncEventArgs>();
+            public SocketAsyncEventArgs Pop()
             {
                 SocketAsyncEventArgs saea = null;
-                if (m_completed_queue.Count == 0 || !m_completed_queue.TryDequeue(out saea))
+                if (m_completed_pool.IsEmpty || !m_completed_pool.TryTake(out saea))
                 {
                     saea = new SocketAsyncEventArgs();
                     saea.Completed += Saea_Completed;
@@ -34,7 +34,7 @@ namespace xDM.xNet.xSockets.xSocket
 
             public void Push(SocketAsyncEventArgs saea)
             {
-                m_completed_queue.Enqueue(saea);
+                m_completed_pool.Add(saea);
             }
         }
 

@@ -49,11 +49,14 @@ namespace xDM.xData.xClient
             var basePath = Path.GetDirectoryName(myAssembly?.CodeBase?.Replace("file:///", ""));
             var dChar = Path.DirectorySeparatorChar;
             if (dChar == '/') basePath = $"/{basePath}";
+            basePath = $"{basePath}{dChar}xDbDrivers";
+            if(!Directory.Exists(basePath))
+                basePath = $"{Environment.GetEnvironmentVariable("windir")}{dChar}xDbDrivers";
             string nameSpace = "", dllFile = "";
             if (IntPtr.Size == 4)
-                basePath = $@"{basePath}{dChar}xDbDrivers{dChar}x86";
+                basePath = $@"{basePath}{dChar}x86";
             else
-                basePath = $@"{basePath}{dChar}xDbDrivers{dChar}x64";
+                basePath = $@"{basePath}{dChar}x64";
             var di = new DirectoryInfo($@"{basePath}{dChar}{dbType}");
             var ds = di.GetDirectories();
             foreach (var d in ds)
@@ -93,9 +96,7 @@ namespace xDM.xData.xClient
         {
             Type oType;
             if (_dicDbTypeRegToType.TryGetValue($"{dbType}{regInstanceName}", out oType))
-            {
                 return GetInstance<T>(oType, args, argTypes);
-            }
             var assembly = GetAssembly(dbType);
             var t = typeof(T); object obj = null;
             string nameSpace;

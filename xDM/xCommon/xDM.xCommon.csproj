@@ -23,10 +23,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\xBuild\Release\AnyCPU</OutputPath>
+    <OutputPath>..\..\xBuild\Release\AnyCpu\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -105,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyString.cs" />
     <Compile Include="MyStringBuilder.cs" />
+    <Compile Include="xClasses\ProcessInfo.cs" />
     <Compile Include="xExtensions\MyArrayExt.cs" />
     <Compile Include="xExtensions\MyByteExt.cs" />
     <Compile Include="xExtensions\MyDataTableExt.cs" />

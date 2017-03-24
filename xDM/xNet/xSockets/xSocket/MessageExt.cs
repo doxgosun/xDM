@@ -17,7 +17,7 @@ namespace xDM.xNet.xSockets.xSocket
             //包格式：（1111 1111）（00）（10 1111 ... 1111）（1011）（11。。00011）
             //包说明：开始标志0xff 包类型       包长度         校验       数据体  
             //其中：开始标志 8位：固定为0xff
-            //      包类型   2位：00数据 01文件 10 预留 11心跳,心跳包没有数据体
+            //      包类型   2位：00 Message 01文件 10数据 11心跳,心跳包包长度为0，并且没有数据体
             //      包长度  30位：最大为1G 数据类型的包包长度表示数据大小，文件包表示文件编号
             //      校验     8位：b[5] = (b[1]+b[2]+b[3]+b[4])/4
             if (msg == null) return null;
@@ -41,7 +41,8 @@ namespace xDM.xNet.xSockets.xSocket
 
         public static Message GetMessage(byte[] SerializableBytes)
         {
-            if (SerializableBytes == null || SerializableBytes.Length == 0) return null;
+            if (SerializableBytes == null || SerializableBytes.Length == 0)
+                return null;
             try
             {
                 return SerializableBytes.DeDeserialize<Message>();

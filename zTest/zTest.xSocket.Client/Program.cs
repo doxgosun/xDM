@@ -11,54 +11,62 @@ namespace zTest.xSocket.Client
 	{
 		public static void Main(string[] args)
 		{
-
-            var tCount = 1;
-            while (tCount -- > 0)
-            {
-                var action = new Action(() =>{
-                    var client = new TcpClientSocket();
-                    client.HandleMessage += Client_HandleMessage;
-                    if (client.Connect("127.0.0.1", 23456))
-                    {
-                        Message msg = new Message();
-                        //client.SendMessageAsync(msg);
-                        var loop = 10000;
-                        Thread.Sleep(1000);
-                        while (loop-- > 0)
-                        {
-                            lock(lck2)
-                                sendCount++;
-                            Thread.Sleep(1);
-                          //  if (sendCount % 2 == 0)
-                            {
-                                msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
-                                //client.SendMessage(msg, 10000);
-                            }
-                        //    	else
-                            {
-                                msg.Value = $"{sendCount}Client: SendMessgaeSync:{DateTime.Now}";
-                                client.SendMessageAsync(msg);
-                            }
-                        }
-                    }
-                });
-                Task task = new Task(action);
-                task.Start();
-                //Console.WriteLine(tCount);
-                Thread.Sleep(50);
-            }
+            object tLck = new object();
+            var tCount = 0;
             int lastSended = 0, lastRec = 0;
+
             while (true)
             {
-				Console.WriteLine($"发出：{sendCount}  收到：{recCount}");
-                Console.Title = $"发出：{sendCount - lastSended}  接收：{recCount - lastRec}";
+                if (tCount < 1)
+                {
+                    var action = new Action(() =>
+                    {
+                        var client = new TcpClientSocket();
+                     //   client.HandleMessage += Client_HandleMessage;
+                        if (client.Connect("10.202.196.51", 23456))
+                        {
+                            lock (tLck)
+                                tCount++;
+                            Message msg = new Message();
+                            //client.SendMessageAsync(msg);
+                            var loop = 100000000;
+                            Thread.Sleep(1000);
+                            while (loop-- > 0)
+                            {
+
+                              //  Thread.Sleep(300);
+                                //  if (sendCount % 2 == 0)
+                                {
+                                    msg.Value = $"{sendCount}Client: SendMessgae:{DateTime.Now}";
+                                    //client.SendMessage(msg, 10000);
+                                }
+                                //    	else
+                                {
+                                    msg.Value = $"{sendCount}Client: SendMessgaeSync:{DateTime.Now}";
+                                    if (client.SendMessageAsync(msg))
+                                        lock (lck2)
+                                            sendCount++;
+                                    else
+                                    {
+                                        lock (tLck)
+                                            tCount--;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        client.Dispose();
+                    });
+                    Task task = new Task(action);
+                    task.Start();
+                }
+                Console.WriteLine($"发出：{sendCount}  收到：{recCount}  线程数：{tCount}");
+                Console.Title = $"发出：{sendCount - lastSended}  接收：{recCount - lastRec}  线程数：{tCount}";
                 lastSended = sendCount;
                 lastRec = recCount;
                 //sendCount = 0;
                 Thread.Sleep(1000);
             }
-
-
 		}
 		static int sendCount = 0;
         static int recCount = 0;

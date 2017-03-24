@@ -17,36 +17,43 @@ namespace xDM.xNet.xSockets.xSocket
 		/// <summary>
 		/// 显示信息
 		/// </summary>
-		public Action<string> eShowMsg;
+		public delegate void showMsg(string message);
 		/// <summary>
 		/// 处理发生错误
 		/// </summary>
-		public Action<object, Exception> onError;
-		/// <summary>
-		/// 发送BufferSize
-		/// </summary>
-		public int SendBufferSize { get; set; } = 1024;
+		public delegate void onError(object sender, Exception err);
+
+        public delegate void serverHandlePackage(TcpServerSocket sender, string clientRemoteEndPoint, byte[] package);
+
+        public delegate void clientHandlePackage(TcpClientSocket sender, byte[] package);
+        /// <summary>
+        /// 发送BufferSize
+        /// </summary>
+        public int SendBufferSize { get; set; } = 1024 * 64;
 		/// <summary>
 		/// 接收BufferSize
 		/// </summary>
-		public int ReciveBufferSize { get; set; } = 1024 * 2;
+		public int ReciveBufferSize { get; set; } = 1024 * 64;
 
 		/// <summary>
 		/// 发送信息缓存
 		/// </summary>
-		protected ConcurrentDictionary<Guid, Message> dicSendedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
+		protected ConcurrentDictionary<Guid, byte[]> dicSendedPackages { get; set; } = new ConcurrentDictionary<Guid, byte[]>();
 		/// <summary>
 		/// 接收信息缓存
 		/// </summary>
-		protected ConcurrentDictionary<Guid, Message> dicRevivedMessages { get; set; } = new ConcurrentDictionary<Guid, Message>();
+		protected ConcurrentDictionary<Guid, byte[]> dicRevivedPackages { get; set; } = new ConcurrentDictionary<Guid, byte[]>();
 
 		protected bool SendByteAsync(Socket worksocket, byte[] data)
 		{
 			if (worksocket == null)
 				return false;
+            if (!worksocket.Connected)
+                return false;
 			try
 			{
-				SocketAsyncEventArgs sendArg = SocketAsyncEventArgsPool.SendPool.Get();
+				SocketAsyncEventArgs sendArg = SocketAsyncEventArgsPool.SendPool.Pop();
+                //var dataList = new List<byte[]>();
 				sendArg.SetBuffer(data, 0, data.Length);
 				var result = worksocket.SendAsync(sendArg);
 				if (!result)
@@ -56,15 +63,12 @@ namespace xDM.xNet.xSockets.xSocket
 			catch (Exception err)
 			{
 				SendByteAsyncFailed(worksocket, err.Message);
-				onError?.BeginInvoke(this, err, null, null);
-				if (err.GetType() == typeof(SocketException))
-				{
-
-				}
+				HandleError(err);
 				return false;
 			}
 		}
 
 		protected abstract void SendByteAsyncFailed(Socket worksocket,string message);
+        protected abstract void HandleError(Exception err);
     }
 }
