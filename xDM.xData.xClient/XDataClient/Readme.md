@@ -9,11 +9,11 @@
 ```
     //使用xDM提供的驱动
     var client = new xDM.xData.xClient.XDataClient(xDM.xData.DatabaseType.Vertica);
-````
+```
 
 #### 使用其他的驱动
 ##### 使用各种数据库提供的驱动，nuget包或dll都可以，正常引用即可
-````
+```
     //使用其他的驱动，只需要提供连接的Type
     var connType = typeof(Vertica.Data.VerticaClient.VerticaConnection);
     var client = new xDM.xData.xClient.XDataClient(connType);
@@ -24,10 +24,10 @@
 ```
     //方式一（使用默认）
     client.SetAdoDbConnectionString("127.0.0.1", -1, "sa", "ggg123", "dbtest");
-````
+```
 
 #### 方式二
-````
+```
     //方式二
     var connStr = "Server={0},{4};Database={1};Uid={2};PWD='{3}';";
     client.SetConnectionString(connStr);
@@ -95,14 +95,14 @@
     /// <returns></returns>
 
     client.Import("目标表", "文件.csv", Encoding.UTF8, true, "id,name,val", ',', "");
-````
+```
 
 #### 从 DataTable 导入
-````
+```
     // dt = 从其他地方来的DataTable 如 Excel 表
     //批量导入数据，请确保 DataTable 的字段名在目标表中存在，如果字段名需要映射，请使用 XBulkCopy
     client.Import("目标表", dt);
-````
+```
 
 #### 从 IDataReader 导入
 ```
