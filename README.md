@@ -41,12 +41,6 @@ FtpWebClient和XFtpClient，ftp操作工具
 ### xDM.xPackage.XPackageBase
 一个二进制数据的数据包协议，在串口/socket通讯工具里用到，使用在 XPackageFactory 可以进行包的合并，合并的包接收顺序可以是乱序
 
-### xDM.xPolice.UsbKey
-一个USB GA证书的静态操作类
-
-### xDM.xPolice.PoliceKeyInfo
-GA证书类，可能直接解释出证书的身份证号等信息，在读取本机usb证书或网站后台获取证书信息十分有用
-
 ### xDM.xReflection.DelegateBuilder
 通过EMIT创建类型的反射委托创建，能够对类的方法调用、构造函数调用，获取或设置属性和获取或设置字段提供委托，效率比直接反射要好
 
